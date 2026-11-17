@@ -1,27 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nasser Al-Haqshah</title>
 <meta name="description" content="Nasser Al-Haqshah, AI engineer in Riyadh. RAG, computer vision and LLM applications that show their evidence.">
+<link rel="canonical" href="https://nasserhaqsha.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nasserhaqsha.github.io/">
+<meta property="og:title" content="Nasser Al-Haqshah | AI Engineer, Riyadh">
+<meta property="og:description" content="I build AI that shows its evidence: RAG, computer vision and LLM applications. Ask my work a question.">
+<meta property="og:image" content="https://nasserhaqsha.github.io/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nasser Al-Haqshah | AI Engineer, Riyadh">
+<meta name="twitter:description" content="I build AI that shows its evidence: RAG, computer vision and LLM applications.">
+<meta name="twitter:image" content="https://nasserhaqsha.github.io/og.png">
+<meta name="theme-color" content="#16203A">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2316203A'/><g fill='%23F2D04B'><circle cx='16' cy='8' r='3.3'/><circle cx='48' cy='8' r='3.3'/><circle cx='16' cy='16' r='3.3'/><circle cx='24' cy='16' r='3.3'/><circle cx='48' cy='16' r='3.3'/><circle cx='16' cy='24' r='3.3'/><circle cx='32' cy='24' r='3.3'/><circle cx='48' cy='24' r='3.3'/><circle cx='16' cy='32' r='3.3'/><circle cx='32' cy='32' r='3.3'/><circle cx='48' cy='32' r='3.3'/><circle cx='16' cy='40' r='3.3'/><circle cx='40' cy='40' r='3.3'/><circle cx='48' cy='40' r='3.3'/><circle cx='16' cy='48' r='3.3'/><circle cx='48' cy='48' r='3.3'/><circle cx='16' cy='56' r='3.3'/><circle cx='48' cy='56' r='3.3'/></g></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@200..800&family=Readex+Pro:wght@300..700&display=swap" rel="stylesheet">
 <style>
-/* Layout idea: an evidence ledger. Every claim on the page sits next to its proof;
+/* Layout idea: an evidence ledger. Every claim sits next to its proof;
    the hero is a live search over Nasser's own facts, the way his systems retrieve evidence. */
 :root {
-  --paper: #EEF1EA;      /* cool field-notebook paper */
-  --sheet: #F8F9F5;      /* raised panels */
-  --ink: #16203A;        /* navy ink */
+  --paper: #EEF1EA;
+  --sheet: #F8F9F5;
+  --ink: #16203A;
   --muted: #5A6373;
   --rule: #CDD3C8;
-  --mark: #F2D04B;       /* highlighter: evidence */
+  --mark: #F2D04B;
   --mark-ink: #16203A;
-  --signal: #2A7A66;     /* tracking boxes, links */
+  --signal: #2A7A66;
   --font-display: "Handjet", "Readex Pro", system-ui, sans-serif;
-  --font-body: "Readex Pro", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-body: "Readex Pro", "Segoe UI", Tahoma, system-ui, -apple-system, sans-serif;
   --step--1: 0.84rem;
   --step-0: 1rem;
   --step-1: 1.25rem;
@@ -47,11 +61,11 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0; background: var(--paper); color: var(--ink);
-  font-family: var(--font-body); font-size: var(--step-0); line-height: 1.6;
-  font-weight: 350;
+  font-family: var(--font-body); font-size: var(--step-0); line-height: 1.6; font-weight: 350;
 }
+html[lang="ar"] body { line-height: 1.75; }
 a { color: var(--signal); text-underline-offset: 3px; }
-a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-visible {
+a:focus-visible, button:focus-visible, input:focus-visible {
   outline: 2px solid var(--signal); outline-offset: 3px; border-radius: 3px;
 }
 h1, h2, h3 { text-wrap: balance; margin: 0; }
@@ -59,41 +73,44 @@ p { margin: 0; }
 mark { background: var(--mark); color: var(--mark-ink); padding: 0 .15em; border-radius: 2px; }
 .wrap { width: min(1180px, 100% - 2rem); margin-inline: auto; }
 .num { font-family: var(--font-display); font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+bdi { unicode-bidi: isolate; }
 
 /* ---------- header ---------- */
-.top {
-  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-  padding-block: 1.1rem; border-bottom: 1px solid var(--rule);
-}
+.top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.1rem; border-bottom: 1px solid var(--rule); }
 .top .who { font-weight: 600; text-decoration: none; color: var(--ink); }
+.top .right { display: flex; align-items: center; gap: 1.25rem; }
 .top nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
 .top nav a { color: var(--muted); text-decoration: none; font-size: var(--step--1); }
 .top nav a:hover { color: var(--ink); }
+.lang {
+  font: inherit; font-size: var(--step--1); cursor: pointer; color: var(--ink);
+  background: var(--sheet); border: 1px solid var(--rule); border-radius: 999px; padding: .25rem .8rem;
+}
+.lang:hover { border-color: var(--signal); color: var(--signal); }
 
 /* ---------- hero ---------- */
 .hero {
   display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1.5rem, 4vw, 3.5rem);
-  padding-block: clamp(2rem, 5vw, 4rem) clamp(2.5rem, 5vw, 4rem);
-  align-items: start;
+  padding-block: clamp(2rem, 5vw, 4rem) clamp(2.5rem, 5vw, 4rem); align-items: start;
 }
-.name {
-  font-family: var(--font-display); font-weight: 700; font-size: var(--step-4);
-  line-height: .86; letter-spacing: .01em;
-}
+.name { font-family: var(--font-display); font-weight: 700; font-size: var(--step-4); line-height: .86; letter-spacing: .01em; }
+html[lang="ar"] .name { line-height: 1.05; }
 .name span { display: block; white-space: nowrap; }
 .name span + span { color: var(--signal); font-weight: 400; }
 .role { margin-top: 1.25rem; color: var(--muted); font-size: var(--step--1); }
-.thesis { margin-top: .6rem; font-size: var(--step-2); line-height: 1.25; font-weight: 500; max-width: 18ch; }
-.thesis mark { padding: 0 .2em; }
+.thesis { margin-top: .6rem; font-size: var(--step-2); line-height: 1.3; font-weight: 500; max-width: 18ch; }
+html[lang="ar"] .thesis { max-width: 16ch; }
 .lede { margin-top: 1rem; max-width: 42ch; color: var(--muted); }
 .actions { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
 .btn {
   font: inherit; font-size: var(--step--1); font-weight: 500; cursor: pointer;
   border: 1.5px solid var(--ink); background: var(--ink); color: var(--paper);
-  padding: .55rem 1rem; border-radius: 999px; text-decoration: none; display: inline-flex; gap: .4rem;
+  padding: .55rem 1rem; border-radius: 999px; text-decoration: none; display: inline-flex; gap: .4rem; align-items: center;
 }
 .btn.ghost { background: transparent; color: var(--ink); }
 .btn:hover { transform: translateY(-1px); }
+.btn svg { width: 1em; height: 1em; }
 .copy-status { font-size: var(--step--1); color: var(--muted); min-height: 1.4em; margin-top: .5rem; }
 
 /* ask panel */
@@ -124,6 +141,7 @@ mark { background: var(--mark); color: var(--mark-ink); padding: 0 .15em; border
 .src b { font-weight: 600; color: var(--signal); }
 .bar { flex: 1; height: 4px; background: var(--rule); border-radius: 4px; overflow: hidden; max-width: 140px; }
 .bar i { display: block; height: 100%; background: var(--signal); transform-origin: left; transition: transform .5s ease; }
+html[dir="rtl"] .bar i { transform-origin: right; }
 .score { font-family: var(--font-display); font-size: .95rem; }
 .empty { color: var(--muted); font-size: .95rem; }
 .how { margin-top: 1rem; padding-top: .8rem; border-top: 1px dashed var(--rule); font-size: .78rem; color: var(--muted); }
@@ -131,55 +149,43 @@ mark { background: var(--mark); color: var(--mark-ink); padding: 0 .15em; border
 /* ---------- sections ---------- */
 section { padding-block: clamp(2.5rem, 6vw, 4.5rem); border-top: 1px solid var(--rule); }
 .sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
-.sec-head h2 { font-size: var(--step-3); font-family: var(--font-display); font-weight: 600; line-height: 1; }
+.sec-head h2 { font-size: var(--step-3); font-family: var(--font-display); font-weight: 600; line-height: 1.05; }
 .sec-head p { color: var(--muted); max-width: 46ch; font-size: .95rem; }
 
-/* project ledger */
-.case {
-  display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(1.25rem, 4vw, 3rem);
-  padding-block: 2.2rem; border-top: 1px solid var(--rule);
-}
+.case { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(1.25rem, 4vw, 3rem); padding-block: 2.2rem; border-top: 1px solid var(--rule); }
 .case:first-of-type { border-top: 0; padding-top: 0; }
-.glyph {
-  font-family: var(--font-display); font-size: clamp(4.5rem, 12vw, 8.5rem); line-height: 1.15; font-weight: 600; padding-bottom: .15em;
-  color: var(--ink); direction: rtl; text-align: left;
-}
+.glyph { font-family: var(--font-display); font-size: clamp(4.5rem, 12vw, 8.5rem); line-height: 1.15; font-weight: 600; padding-bottom: .15em; direction: rtl; text-align: left; }
+html[dir="rtl"] .glyph { text-align: right; }
 .glyph.latin { direction: ltr; font-size: clamp(3rem, 7vw, 4.6rem); font-weight: 500; }
 .case h3 { font-size: var(--step-1); font-weight: 600; margin-top: .6rem; }
 .meta { color: var(--muted); font-size: var(--step--1); margin-top: .35rem; }
 .tag-private { display: inline-block; margin-top: .6rem; font-size: .78rem; border: 1px solid var(--rule); border-radius: 6px; padding: .15rem .5rem; color: var(--muted); }
-.case ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .35rem; }
+.case ul { margin: 0; padding-inline-start: 1.1rem; display: grid; gap: .35rem; }
 .case li::marker { color: var(--signal); }
 .body-col { display: grid; gap: 1.4rem; align-content: start; }
 
-/* mirqab canvas */
-.scope { position: relative; border-radius: 12px; overflow: hidden; border: 1px solid var(--rule); background: var(--ink); }
+.scope { position: relative; border-radius: 12px; overflow: hidden; border: 1px solid var(--rule); background: var(--ink); margin: 0; }
 .scope canvas { display: block; width: 100%; height: clamp(220px, 32vw, 320px); }
-.scope figcaption {
-  display: flex; justify-content: space-between; align-items: center; gap: .8rem;
-  padding: .55rem .8rem; font-size: .78rem; color: var(--muted); background: var(--sheet); border-top: 1px solid var(--rule);
-}
+.scope figcaption { display: flex; justify-content: space-between; align-items: center; gap: .8rem; padding: .55rem .8rem; font-size: .78rem; color: var(--muted); background: var(--sheet); border-top: 1px solid var(--rule); }
 .scope button { font: inherit; font-size: .78rem; cursor: pointer; background: none; border: 1px solid var(--rule); color: var(--ink); border-radius: 6px; padding: .15rem .55rem; }
 
-/* metric bars */
 .metric { display: grid; gap: .5rem; }
 .metric h4 { margin: 0; font-size: .85rem; font-weight: 500; color: var(--muted); }
 .mrow { display: grid; grid-template-columns: 11rem 1fr 3.5rem; gap: .75rem; align-items: center; font-size: .88rem; }
 .mtrack { height: 12px; background: repeating-linear-gradient(90deg, var(--rule) 0 1px, transparent 1px 10%); border-bottom: 1px solid var(--rule); position: relative; }
-.mfill { position: absolute; inset: 0 auto 0 0; background: var(--muted); border-radius: 0 3px 3px 0; }
+.mfill { position: absolute; inset-block: 0; inset-inline-start: 0; background: var(--muted); border-start-end-radius: 3px; border-end-end-radius: 3px; }
 .mfill.hi { background: var(--signal); }
-.mval { font-family: var(--font-display); font-size: 1.15rem; text-align: right; }
+.mfill.gain { opacity: .35; }
+.mval { font-family: var(--font-display); font-size: 1.15rem; text-align: end; }
 .axis { display: grid; grid-template-columns: 11rem 1fr 3.5rem; gap: .75rem; font-size: .72rem; color: var(--muted); }
-.axis span { display: flex; justify-content: space-between; }
 .axis .ticks { position: relative; display: block; height: 1.1em; }
 .axis .ticks i { position: absolute; transform: translateX(-50%); font-style: normal; }
+html[dir="rtl"] .axis .ticks i { transform: translateX(50%); }
 .axis .ticks i:first-child { transform: none; }
-.mfill.gain { opacity: .35; }
 
-/* deraa flow */
-.flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; counter-reset: step; }
-.flow li { position: relative; padding: .9rem .9rem .9rem 0; border-top: 3px solid var(--ink); counter-increment: step; }
-.flow li + li { padding-left: .9rem; border-left: 1px dashed var(--rule); }
+.flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); counter-reset: step; }
+.flow li { position: relative; padding-block: .9rem; padding-inline: 0 .9rem; border-top: 3px solid var(--ink); counter-increment: step; }
+.flow li + li { padding-inline-start: .9rem; border-inline-start: 1px dashed var(--rule); }
 .flow li::before { content: counter(step); font-family: var(--font-display); font-size: 1.6rem; line-height: 1; color: var(--signal); display: block; margin-bottom: .35rem; }
 .flow b { display: block; font-weight: 600; font-size: .92rem; }
 .flow span { font-size: .82rem; color: var(--muted); display: block; margin-top: .2rem; }
@@ -189,25 +195,24 @@ section { padding-block: clamp(2.5rem, 6vw, 4.5rem); border-top: 1px solid var(-
 .v-part { color: var(--ink); border-color: var(--mark); background: color-mix(in srgb, var(--mark) 35%, transparent); }
 .v-no { color: var(--muted); border-color: var(--muted); text-decoration: line-through; text-decoration-thickness: 1px; }
 .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
-.fact { border-left: 2px solid var(--mark); padding-left: .7rem; }
+.fact { border-inline-start: 2px solid var(--mark); padding-inline-start: .7rem; }
 .fact .num { font-size: 2.1rem; line-height: 1; display: block; }
-.fact small { color: var(--muted); font-size: .78rem; line-height: 1.35; display: block; margin-top: .2rem; }
+.fact small { color: var(--muted); font-size: .78rem; line-height: 1.4; display: block; margin-top: .2rem; }
 
-/* more work */
-.more { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--rule); margin-top: 1rem; }
-.more article { padding: 1.2rem 1.2rem 1.2rem 0; border-bottom: 1px solid var(--rule); }
-.more article:not(:nth-child(3n+1)) { padding-left: 1.2rem; border-left: 1px solid var(--rule); }
+.more { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--rule); margin-top: 1rem; }
+.more article { padding-block: 1.2rem; padding-inline: 0 1.2rem; border-bottom: 1px solid var(--rule); }
+.more article:not(:nth-child(3n+1)) { padding-inline-start: 1.2rem; border-inline-start: 1px solid var(--rule); }
 .more h3 { font-size: 1rem; font-weight: 600; }
 .more .meta { margin-top: .15rem; }
 .more p { margin-top: .5rem; font-size: .9rem; }
 
-/* skills matrix */
 .matrix-wrap { overflow-x: auto; }
 table.matrix { border-collapse: collapse; width: 100%; min-width: 720px; font-size: .9rem; }
 .matrix th, .matrix td { padding: .7rem .5rem; border-bottom: 1px solid var(--rule); text-align: center; }
 .matrix thead th { font-weight: 500; color: var(--muted); font-size: .8rem; vertical-align: bottom; }
-.matrix tbody th { text-align: left; font-weight: 500; white-space: nowrap; }
-.matrix tbody th button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-align: left; }
+.matrix th.skill-col { text-align: start; }
+.matrix tbody th { text-align: start; font-weight: 500; white-space: nowrap; }
+.matrix tbody th button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-align: start; }
 .matrix tbody th button:hover { color: var(--signal); }
 .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: var(--ink); vertical-align: middle; }
 .matrix td.no .dot { background: transparent; border: 1px solid var(--rule); width: 6px; height: 6px; }
@@ -217,14 +222,13 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 720px; font-si
 .tools { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.5rem; padding: 0; list-style: none; }
 .tools li { border: 1px solid var(--rule); background: var(--sheet); border-radius: 6px; padding: .2rem .6rem; font-size: .85rem; }
 
-/* path timeline */
-.path { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.path { list-style: none; margin: 0; padding: 0; display: grid; }
 .path li { display: grid; grid-template-columns: 11rem 1.5rem minmax(0, 1fr); gap: 1rem; }
-.path .when { font-family: var(--font-display); font-size: 1.35rem; line-height: 1.3; text-align: right; padding-top: .1rem; }
+.path .when { font-family: var(--font-display); font-size: 1.35rem; line-height: 1.3; text-align: end; padding-top: .1rem; }
 .path .line { position: relative; }
 .path .line::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--rule); }
 .path .line::after { content: ""; position: absolute; left: 50%; top: .55rem; width: 11px; height: 11px; transform: translateX(-50%); border-radius: 50%; background: var(--paper); border: 2px solid var(--ink); }
-.path li.now .line::after { background: var(--mark); border-color: var(--ink); }
+.path li.now .line::after { background: var(--mark); }
 .path .what { padding-bottom: 2rem; }
 .path h3 { font-size: 1.05rem; font-weight: 600; }
 .path .where { color: var(--muted); font-size: .9rem; }
@@ -232,36 +236,35 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 720px; font-si
 
 .creds { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; margin-top: 1rem; }
 .creds h3 { font-size: 1rem; font-weight: 600; margin-bottom: .6rem; }
-.creds ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .35rem; font-size: .93rem; }
+.creds ul { margin: 0; padding-inline-start: 1.1rem; display: grid; gap: .35rem; font-size: .93rem; }
 
-/* contact */
 .contact { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 2rem; align-items: end; }
-.contact h2 { font-family: var(--font-display); font-size: clamp(2.6rem, 7vw, 4.8rem); line-height: .95; font-weight: 600; }
+.contact h2 { font-family: var(--font-display); font-size: clamp(2.6rem, 7vw, 4.8rem); line-height: .98; font-weight: 600; }
+html[lang="ar"] .contact h2 { line-height: 1.2; }
 .contact dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: .45rem 1rem; font-size: .95rem; }
 .contact dt { color: var(--muted); }
 .contact dd { margin: 0; overflow-wrap: anywhere; }
 footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; border-top: 1px solid var(--rule); }
 
-/* ---------- responsive ---------- */
 @media (max-width: 900px) {
   .hero, .case, .contact { grid-template-columns: 1fr; }
   .glyph { font-size: 5rem; }
   .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .flow li:nth-child(3) { padding-left: 0; border-left: 0; }
+  .flow li:nth-child(3) { padding-inline-start: 0; border-inline-start: 0; }
   .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .more { grid-template-columns: 1fr 1fr; }
-  .more article:not(:nth-child(3n+1)) { padding-left: 0; border-left: 0; }
-  .more article:nth-child(2n) { padding-left: 1.2rem; border-left: 1px solid var(--rule); }
+  .more article:not(:nth-child(3n+1)) { padding-inline-start: 0; border-inline-start: 0; }
+  .more article:nth-child(2n) { padding-inline-start: 1.2rem; border-inline-start: 1px solid var(--rule); }
 }
 @media (max-width: 560px) {
   .top nav { display: none; }
   .more { grid-template-columns: 1fr; }
-  .more article:nth-child(2n) { padding-left: 0; border-left: 0; }
+  .more article:nth-child(2n) { padding-inline-start: 0; border-inline-start: 0; }
   .mrow, .axis { grid-template-columns: 7.5rem 1fr 3rem; }
   .path li { grid-template-columns: 1fr; gap: .2rem; }
-  .path .when { text-align: left; }
+  .path .when { text-align: start; }
   .path .line { display: none; }
-  .path .what { padding-bottom: 1.4rem; border-left: 2px solid var(--rule); padding-left: .9rem; }
+  .path .what { padding-bottom: 1.4rem; border-inline-start: 2px solid var(--rule); padding-inline-start: .9rem; }
   .creds { grid-template-columns: 1fr; }
   .ask form { flex-direction: column; }
 }
@@ -275,41 +278,45 @@ footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; bo
 <body>
 
 <header class="wrap top">
-  <a class="who" href="#top">Nasser Al-Haqshah</a>
-  <nav aria-label="Sections">
-    <a href="#work">Work</a>
-    <a href="#skills">Skills</a>
-    <a href="#path">Path</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <a class="who" href="#top" data-ar="ناصر هقشه">Nasser Al-Haqshah</a>
+  <div class="right">
+    <nav aria-label="Sections">
+      <a href="#work" data-ar="الأعمال">Work</a>
+      <a href="#skills" data-ar="المهارات">Skills</a>
+      <a href="#path" data-ar="المسيرة">Path</a>
+      <a href="#contact" data-ar="تواصل">Contact</a>
+    </nav>
+    <button class="lang" type="button" id="lang-toggle" lang="ar">العربية</button>
+  </div>
 </header>
 
 <main id="top">
   <div class="wrap hero">
     <div>
-      <h1 class="name" aria-label="Nasser Al-Haqshah"><span>Nasser</span><span>Al-Haqshah</span></h1>
-      <p class="role">AI engineer in Riyadh. RAG, computer vision and LLM applications.</p>
-      <p class="thesis">I build AI that <mark>shows its evidence</mark>.</p>
-      <p class="lede">A drone detector whose reports contain no invented numbers. A compliance engine that quotes the policy before it rules. Before AI, I ran KPI reporting on 20+ digital transformation projects.</p>
+      <h1 class="name" data-ar="&lt;span&gt;ناصر&lt;/span&gt;&lt;span&gt;هقشه&lt;/span&gt;"><span>Nasser</span><span>Al-Haqshah</span></h1>
+      <p class="role" data-ar="مهندس ذكاء اصطناعي في الرياض. تطبيقات RAG والرؤية الحاسوبية والنماذج اللغوية الكبيرة.">AI engineer in Riyadh. RAG, computer vision and LLM applications.</p>
+      <p class="thesis" data-ar="أبني ذكاءً اصطناعياً &lt;mark&gt;يُبرز أدلته&lt;/mark&gt;.">I build AI that <mark>shows its evidence</mark>.</p>
+      <p class="lede" data-ar="كاشف درونات تخلو تقاريره من أي رقم مختلق. ومحرك امتثال يقتبس من السياسة قبل أن يحكم. وقبل الذكاء الاصطناعي، تابعت مؤشرات الأداء في أكثر من 20 مشروع تحول رقمي.">A drone detector whose reports contain no invented numbers. A compliance engine that quotes the policy before it rules. Before AI, I ran KPI reporting on 20+ digital transformation projects.</p>
       <div class="actions">
-        <button class="btn" type="button" id="copy-email" data-email="nasserhqsha@gmail.com">Copy email</button>
+        <a class="btn" href="https://nasserhaqsha.github.io/cv.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1v9m0 0L4.5 6.5M8 10l3.5-3.5M2 13h12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-ar="السيرة الذاتية PDF">CV (PDF)</span></a>
+        <button class="btn ghost" type="button" id="copy-email" data-email="nasserhqsha@gmail.com" data-ar="نسخ الإيميل">Copy email</button>
         <a class="btn ghost" href="https://www.linkedin.com/in/nasser-haqshah/" target="_blank" rel="noopener">LinkedIn</a>
         <a class="btn ghost" href="https://github.com/NasserHaqsha" target="_blank" rel="noopener">GitHub</a>
       </div>
-      <p class="copy-status" id="copy-status" aria-live="polite">nasserhqsha@gmail.com</p>
+      <p class="copy-status" id="copy-status" aria-live="polite"><bdi>nasserhqsha@gmail.com</bdi></p>
     </div>
 
     <div class="ask" aria-labelledby="ask-title">
-      <h2 id="ask-title">Ask my work a question</h2>
-      <p class="sub">Answers come only from facts about my projects and roles.</p>
+      <h2 id="ask-title" data-ar="اسأل أعمالي">Ask my work a question</h2>
+      <p class="sub" data-ar="الإجابات تأتي فقط من حقائق عن مشاريعي وأدواري، بالعربي أو الإنجليزي.">Answers come only from facts about my projects and roles.</p>
       <form id="ask-form" role="search">
-        <label for="q" class="visually-hidden" style="position:absolute;left:-9999px">Your question</label>
+        <label for="q" class="sr-only" data-ar="سؤالك">Your question</label>
         <input id="q" name="q" type="search" autocomplete="off" value="How do you stop an AI from making things up?">
-        <button class="btn" type="submit">Search</button>
+        <button class="btn" type="submit" data-ar="ابحث">Search</button>
       </form>
-      <div class="chips" id="chips" aria-label="Example questions"></div>
+      <div class="chips" id="chips"></div>
       <ol class="results" id="results" aria-live="polite"></ol>
-      <p class="how">This box runs BM25 with a small synonym list over <span id="fact-count">33</span> facts from my CV, in your browser. It generates nothing: every answer is a sentence I wrote, ranked by relevance.</p>
+      <p class="how" data-ar="هذا المربع يشغّل خوارزمية BM25 مع قائمة مرادفات صغيرة على &lt;span class=&quot;fc&quot;&gt;33&lt;/span&gt; حقيقة من سيرتي، داخل متصفحك. لا يولّد أي نص: كل إجابة جملة كتبتها أنا، مرتبة حسب صلتها بسؤالك.">This box runs BM25 with a small synonym list over <span class="fc">33</span> facts from my CV, in your browser. It generates nothing: every answer is a sentence I wrote, ranked by relevance.</p>
     </div>
   </div>
 
@@ -317,34 +324,34 @@ footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; bo
   <section id="work">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Work</h2>
-        <p>Three projects in depth, then the rest. Figures come from each project's own evaluation.</p>
+        <h2 data-ar="الأعمال">Work</h2>
+        <p data-ar="ثلاثة مشاريع بالتفصيل، ثم البقية. الأرقام من تقييم كل مشروع نفسه.">Three projects in depth, then the rest. Figures come from each project's own evaluation.</p>
       </div>
 
       <article class="case" id="mirqab">
         <div>
           <div class="glyph" lang="ar">مرقاب</div>
-          <h3>Mirqab: AI early-warning system for UAV threats</h3>
-          <p class="meta">AIEP capstone, team of 4, Oct to Nov 2026</p>
-          <span class="tag-private">Private code. Demo on request.</span>
+          <h3 data-ar="مرقاب: نظام إنذار مبكر بالذكاء الاصطناعي لتهديدات الطائرات المسيّرة">Mirqab: AI early-warning system for UAV threats</h3>
+          <p class="meta" data-ar="مشروع تخرج معسكر AIEP، فريق من 4، أكتوبر إلى نوفمبر 2026">AIEP capstone, team of 4, Oct to Nov 2026</p>
+          <span class="tag-private" data-ar="الكود خاص. العرض التجريبي عند الطلب.">Private code. Demo on request.</span>
         </div>
         <div class="body-col">
-          <figure class="scope" style="margin:0">
+          <figure class="scope">
             <canvas id="scope" aria-label="Illustration: tracking boxes locking onto moving drones" role="img"></canvas>
-            <figcaption><span>Illustration of what Mirqab does, not its real output.</span><button type="button" id="scope-toggle">Pause</button></figcaption>
+            <figcaption><span data-ar="رسم توضيحي لفكرة مرقاب، وليس مخرجاته الفعلية.">Illustration of what Mirqab does, not its real output.</span><button type="button" id="scope-toggle">Pause</button></figcaption>
           </figure>
           <ul>
-            <li>Detects and tracks drones in images, video and live feeds.</li>
-            <li>Writes fact-checked incident reports with an offline RAG pipeline: 0 invented numbers across 12 tests.</li>
-            <li>Raises threat alerts with evidence close-ups. An operator confirms or dismisses every incident.</li>
-            <li>Arabic and English web platform with an operations dashboard, an incident log and face blurring.</li>
+            <li data-ar="يكتشف الدرونات ويتتبعها في الصور والفيديو والبث المباشر.">Detects and tracks drones in images, video and live feeds.</li>
+            <li data-ar="يكتب تقارير حوادث مدققة عبر خط RAG يعمل دون اتصال: صفر أرقام مختلقة في 12 اختباراً.">Writes fact-checked incident reports with an offline RAG pipeline: 0 invented numbers across 12 tests.</li>
+            <li data-ar="يطلق تنبيهات التهديد مع لقطات مقرّبة كدليل، ويؤكد المشغّل كل حادثة أو يرفضها.">Raises threat alerts with evidence close-ups. An operator confirms or dismisses every incident.</li>
+            <li data-ar="منصة ويب بالعربية والإنجليزية فيها لوحة عمليات وسجل حوادث وتمويه للوجوه.">Arabic and English web platform with an operations dashboard, an incident log and face blurring.</li>
           </ul>
           <div class="metric" role="group" aria-label="Detection accuracy, AP50">
-            <h4>Detection accuracy (AP50, higher is better)</h4>
-            <div class="mrow"><span>Baseline model</span><div class="mtrack"><div class="mfill" style="width:11.7%"></div></div><span class="mval">0.117</span></div>
-            <div class="mrow"><span>Mirqab</span><div class="mtrack"><div class="mfill hi" style="width:87.4%"></div></div><span class="mval">0.874</span></div>
-            <div class="mrow"><span>Mirqab, 6 unseen drone types</span><div class="mtrack"><div class="mfill hi" style="width:80.3%"></div></div><span class="mval">0.803</span></div>
-            <div class="axis"><span></span><span><i>0</i><i>0.5</i><i>1.0</i></span><span></span></div>
+            <h4 data-ar="دقة الكشف (AP50، الأعلى أفضل)">Detection accuracy (AP50, higher is better)</h4>
+            <div class="mrow"><span data-ar="النموذج الأساسي">Baseline model</span><div class="mtrack"><div class="mfill" style="width:11.7%"></div></div><span class="mval">0.117</span></div>
+            <div class="mrow"><span data-ar="مرقاب">Mirqab</span><div class="mtrack"><div class="mfill hi" style="width:87.4%"></div></div><span class="mval">0.874</span></div>
+            <div class="mrow"><span data-ar="مرقاب، 6 أنواع درونات جديدة">Mirqab, 6 unseen drone types</span><div class="mtrack"><div class="mfill hi" style="width:80.3%"></div></div><span class="mval">0.803</span></div>
+            <div class="axis"><span></span><span class="ticks"><i style="inset-inline-start:0">0</i><i style="inset-inline-start:50%">0.5</i><i style="inset-inline-start:96%">1.0</i></span><span></span></div>
           </div>
         </div>
       </article>
@@ -352,23 +359,23 @@ footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; bo
       <article class="case" id="deraa">
         <div>
           <div class="glyph" lang="ar">درع</div>
-          <h3>Deraa: AI cybersecurity compliance engine</h3>
-          <p class="meta">AIEP project, team of 4, 2026</p>
+          <h3 data-ar="درع: محرك امتثال للأمن السيبراني بالذكاء الاصطناعي">Deraa: AI cybersecurity compliance engine</h3>
+          <p class="meta" data-ar="مشروع ضمن معسكر AIEP، فريق من 4، 2026">AIEP project, team of 4, 2026</p>
         </div>
         <div class="body-col">
-          <p>Reads a company's cybersecurity policies in Arabic or English and checks them against the NCA's NCNICC-1:2025 controls. Every verdict comes with a verbatim quote from the policy as proof.</p>
+          <p data-ar="يقرأ سياسات الأمن السيبراني للشركة بالعربية أو الإنجليزية ويفحصها مقابل ضوابط الهيئة الوطنية للأمن السيبراني NCNICC-1:2025. كل حكم يأتي مع اقتباس حرفي من السياسة كدليل.">Reads a company's cybersecurity policies in Arabic or English and checks them against the NCA's NCNICC-1:2025 controls. Every verdict comes with a verbatim quote from the policy as proof.</p>
           <ol class="flow" aria-label="How a control gets its verdict">
-            <li><b>Find</b><span>Hybrid retrieval: BM25 plus BGE-M3 embeddings in FAISS, with a reranker.</span></li>
-            <li><b>Judge</b><span>A local LLM rules on the control and returns structured JSON.</span></li>
-            <li><b>Verify</b><span>An evidence guard rejects any quote that is not in the policy word for word.</span></li>
-            <li><b>Score</b><span>Compliance scores are computed in code, not by the LLM.</span></li>
+            <li><b data-ar="ابحث">Find</b><span data-ar="استرجاع هجين: BM25 مع تضمينات BGE-M3 في FAISS، ونموذج لإعادة الترتيب.">Hybrid retrieval: BM25 plus BGE-M3 embeddings in FAISS, with a reranker.</span></li>
+            <li><b data-ar="احكم">Judge</b><span data-ar="نموذج لغوي محلي يحكم على الضابط ويعيد JSON منظماً.">A local LLM rules on the control and returns structured JSON.</span></li>
+            <li><b data-ar="تحقّق">Verify</b><span data-ar="حارس أدلة يرفض أي اقتباس غير موجود في السياسة حرفياً.">An evidence guard rejects any quote that is not in the policy word for word.</span></li>
+            <li><b data-ar="احسب">Score</b><span data-ar="درجات الامتثال تُحسب بالكود، لا بالنموذج اللغوي.">Compliance scores are computed in code, not by the LLM.</span></li>
           </ol>
-          <div class="verdicts"><span>Each control ends as</span><span class="verdict v-ok">compliant</span><span class="verdict v-part">partial</span><span class="verdict v-no">non-compliant</span></div>
+          <div class="verdicts"><span data-ar="ينتهي كل ضابط إلى">Each control ends as</span><span class="verdict v-ok" data-ar="ممتثل">compliant</span><span class="verdict v-part" data-ar="ممتثل جزئياً">partial</span><span class="verdict v-no" data-ar="غير ممتثل">non-compliant</span></div>
           <div class="facts">
-            <div class="fact"><span class="num">65</span><small>main NCA controls checked</small></div>
-            <div class="fact"><span class="num">47</span><small>sub-controls</small></div>
-            <div class="fact"><span class="num">22</span><small>subdomains routed by a fine-tuned AraBERT, benchmarked against TF-IDF</small></div>
-            <div class="fact"><span class="num">0</span><small>cloud calls: it runs fully offline on local models</small></div>
+            <div class="fact"><span class="num">65</span><small data-ar="ضابطاً رئيسياً من ضوابط الهيئة">main NCA controls checked</small></div>
+            <div class="fact"><span class="num">47</span><small data-ar="ضابطاً فرعياً">sub-controls</small></div>
+            <div class="fact"><span class="num">22</span><small data-ar="مجالاً فرعياً يوجّه إليها نموذج AraBERT مضبوط، مقارنةً بـ TF-IDF">subdomains routed by a fine-tuned AraBERT, benchmarked against TF-IDF</small></div>
+            <div class="fact"><span class="num">0</span><small data-ar="اتصال بالسحابة: يعمل بالكامل على نماذج محلية">cloud calls: it runs fully offline on local models</small></div>
           </div>
         </div>
       </article>
@@ -376,51 +383,51 @@ footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; bo
       <article class="case" id="search">
         <div>
           <div class="glyph latin">nDCG@10</div>
-          <h3>Semantic search engine for biology Q&amp;A</h3>
-          <p class="meta">Olo Academy Kaggle competition, Oct 2026</p>
+          <h3 data-ar="محرك بحث دلالي لأسئلة الأحياء">Semantic search engine for biology Q&amp;A</h3>
+          <p class="meta" data-ar="مسابقة أكاديمية علو على Kaggle، أكتوبر 2026">Olo Academy Kaggle competition, Oct 2026</p>
         </div>
         <div class="body-col">
-          <p>The retrieval step of a RAG system: for each question, find the 10 most relevant of 49,457 biology passages by meaning, not keywords. I wrote BM25 and the nDCG@10 metric from scratch as the baseline, then moved to dense search with Qwen3-Embedding-0.6B on a T4 GPU.</p>
+          <p data-ar="مرحلة الاسترجاع في نظام RAG: لكل سؤال، إيجاد أنسب 10 مقاطع من بين 49,457 مقطعاً في الأحياء حسب المعنى لا الكلمات. برمجت BM25 ومقياس nDCG@10 من الصفر كنقطة مقارنة، ثم انتقلت إلى البحث الدلالي بـ Qwen3-Embedding-0.6B على معالج T4.">The retrieval step of a RAG system: for each question, find the 10 most relevant of 49,457 biology passages by meaning, not keywords. I wrote BM25 and the nDCG@10 metric from scratch as the baseline, then moved to dense search with Qwen3-Embedding-0.6B on a T4 GPU.</p>
           <div class="metric" role="group" aria-label="Improvement over the BM25 baseline">
-            <h4>Relative to my BM25 baseline (baseline = 1.00)</h4>
-            <div class="mrow"><span>Ranking quality, nDCG@10</span><div class="mtrack"><div class="mfill hi gain" style="width:94.4%"></div><div class="mfill" style="width:62.5%"></div></div><span class="mval">1.51</span></div>
-            <div class="mrow"><span>Recall</span><div class="mtrack"><div class="mfill hi gain" style="width:93.1%"></div><div class="mfill" style="width:62.5%"></div></div><span class="mval">1.49</span></div>
-            <div class="axis"><span></span><span class="ticks"><i style="left:0">0</i><i style="left:62.5%">1.00</i><i style="left:93.75%">1.50</i></span><span></span></div>
+            <h4 data-ar="مقارنةً بنقطة المقارنة BM25 (الأساس = 1.00)">Relative to my BM25 baseline (baseline = 1.00)</h4>
+            <div class="mrow"><span data-ar="جودة الترتيب nDCG@10">Ranking quality, nDCG@10</span><div class="mtrack"><div class="mfill hi gain" style="width:94.4%"></div><div class="mfill" style="width:62.5%"></div></div><span class="mval">1.51</span></div>
+            <div class="mrow"><span data-ar="الاستدعاء">Recall</span><div class="mtrack"><div class="mfill hi gain" style="width:93.1%"></div><div class="mfill" style="width:62.5%"></div></div><span class="mval">1.49</span></div>
+            <div class="axis"><span></span><span class="ticks"><i style="inset-inline-start:0">0</i><i style="inset-inline-start:62.5%">1.00</i><i style="inset-inline-start:93.75%">1.50</i></span><span></span></div>
           </div>
-          <p class="meta">Dark segment: the BM25 baseline. Light extension: the gain from semantic search (+51% and +49%).</p>
+          <p class="meta" data-ar="الجزء الداكن: نقطة المقارنة BM25. الامتداد الفاتح: مكسب البحث الدلالي (+51% و+49%).">Dark segment: the BM25 baseline. Light extension: the gain from semantic search (+51% and +49%).</p>
         </div>
       </article>
 
       <div class="more" aria-label="More work">
         <article>
-          <h3>Trip-cost agent</h3>
-          <p class="meta">Side project, 2026</p>
-          <p>A LangGraph agent that estimates trip costs, running a local Qwen2.5-1.5B-Instruct model on a Colab T4.</p>
+          <h3 data-ar="وكيل تكاليف الرحلات">Trip-cost agent</h3>
+          <p class="meta" data-ar="مشروع جانبي، 2026">Side project, 2026</p>
+          <p data-ar="وكيل بـ LangGraph يقدّر تكاليف الرحلات، يعمل على نموذج Qwen2.5-1.5B-Instruct محلياً عبر Colab T4.">A LangGraph agent that estimates trip costs, running a local Qwen2.5-1.5B-Instruct model on a Colab T4.</p>
         </article>
         <article>
           <h3>AutoGate</h3>
-          <p class="meta">KSU graduation project, 2025</p>
-          <p>A touch-free parking gate that reads license plates in real time, logs entries in MySQL and shows them on a PHP web dashboard.</p>
+          <p class="meta" data-ar="مشروع التخرج، جامعة الملك سعود، 2025">KSU graduation project, 2025</p>
+          <p data-ar="بوابة مواقف بدون لمس تقرأ لوحات السيارات لحظياً، وتسجل الدخول في MySQL، وتعرضه في لوحة تحكم PHP.">A touch-free parking gate that reads license plates in real time, logs entries in MySQL and shows them on a PHP web dashboard.</p>
         </article>
         <article>
-          <h3>Arabic calligraphy classifier</h3>
-          <p class="meta">Olo Academy Kaggle challenge, 2026</p>
-          <p>Image classification of 12 Arabic calligraphy styles, scored by Macro-F1.</p>
+          <h3 data-ar="مصنّف الخطوط العربية">Arabic calligraphy classifier</h3>
+          <p class="meta" data-ar="تحدي أكاديمية علو على Kaggle، 2026">Olo Academy Kaggle challenge, 2026</p>
+          <p data-ar="تصنيف صور لـ 12 نوعاً من الخطوط العربية، بتقييم Macro-F1.">Image classification of 12 Arabic calligraphy styles, scored by Macro-F1.</p>
         </article>
         <article>
-          <h3>Intel scene classifier</h3>
-          <p class="meta">Bootcamp mini-competition, 2026</p>
-          <p>A CNN built from scratch in PyTorch for 6 scene classes, ranked on test accuracy.</p>
+          <h3 data-ar="مصنّف مشاهد Intel">Intel scene classifier</h3>
+          <p class="meta" data-ar="مسابقة مصغرة في المعسكر، 2026">Bootcamp mini-competition, 2026</p>
+          <p data-ar="شبكة CNN مبنية من الصفر بـ PyTorch لـ 6 فئات من المشاهد، مرتبة حسب دقة الاختبار.">A CNN built from scratch in PyTorch for 6 scene classes, ranked on test accuracy.</p>
         </article>
         <article>
-          <h3>Flower classifier</h3>
-          <p class="meta">Bootcamp lab, 2026</p>
-          <p>Transfer learning with a frozen ResNet18 backbone and a new head in PyTorch.</p>
+          <h3 data-ar="مصنّف الزهور">Flower classifier</h3>
+          <p class="meta" data-ar="معمل في المعسكر، 2026">Bootcamp lab, 2026</p>
+          <p data-ar="تعلم بالنقل على ResNet18 مع تجميد الأساس ورأس تصنيف جديد في PyTorch.">Transfer learning with a frozen ResNet18 backbone and a new head in PyTorch.</p>
         </article>
         <article>
-          <h3>Bootcamp labs</h3>
-          <p class="meta">AIEP, Sep to Nov 2026</p>
-          <p>Backpropagation from scratch, transformers, YOLOS detection, ViT, CLIP, Whisper and LangGraph agents.</p>
+          <h3 data-ar="معامل المعسكر">Bootcamp labs</h3>
+          <p class="meta" data-ar="AIEP، سبتمبر إلى نوفمبر 2026">AIEP, Sep to Nov 2026</p>
+          <p data-ar="الانتشار العكسي من الصفر، والمحوّلات، وكشف الأجسام بـ YOLOS، وViT وCLIP وWhisper، ووكلاء LangGraph.">Backpropagation from scratch, transformers, YOLOS detection, ViT, CLIP, Whisper and LangGraph agents.</p>
         </article>
       </div>
     </div>
@@ -430,28 +437,17 @@ footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; bo
   <section id="skills">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Skills, with receipts</h2>
-        <p>Each dot is a project or role where I used the skill. Select a skill to highlight it.</p>
+        <h2 data-ar="مهارات، مع الإثبات">Skills, with receipts</h2>
+        <p data-ar="كل نقطة مشروع أو دور استخدمت فيه المهارة. اختر مهارة لتبرزها.">Each dot is a project or role where I used the skill. Select a skill to highlight it.</p>
       </div>
       <div class="matrix-wrap">
         <table class="matrix" id="matrix">
-          <thead>
-            <tr>
-              <th scope="col" style="text-align:left">Skill</th>
-              <th scope="col"><a href="#mirqab">Mirqab</a></th>
-              <th scope="col"><a href="#deraa">Deraa</a></th>
-              <th scope="col"><a href="#search">Semantic search</a></th>
-              <th scope="col">Trip agent</th>
-              <th scope="col">AutoGate</th>
-              <th scope="col"><a href="#path">PMO role</a></th>
-              <th scope="col"><a href="#path">SAIP internship</a></th>
-            </tr>
-          </thead>
+          <thead><tr></tr></thead>
           <tbody></tbody>
         </table>
       </div>
       <ul class="tools" aria-label="Tools">
-        <li>Python</li><li>SQL</li><li>PyTorch</li><li>Hugging Face Transformers</li><li>scikit-learn</li><li>pandas</li><li>NumPy</li><li>FAISS</li><li>LangGraph</li><li>Power BI</li><li>Git and GitHub</li><li>Jupyter and Colab</li>
+        <li>Python</li><li>SQL</li><li>PyTorch</li><li>Hugging Face Transformers</li><li>scikit-learn</li><li>pandas</li><li>NumPy</li><li>FAISS</li><li>LangGraph</li><li>Power BI</li><li>Git / GitHub</li><li>Jupyter / Colab</li>
       </ul>
     </div>
   </section>
@@ -460,59 +456,59 @@ footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; bo
   <section id="path">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Path</h2>
-        <p>From data analysis to project delivery to AI engineering.</p>
+        <h2 data-ar="المسيرة">Path</h2>
+        <p data-ar="من تحليل البيانات، إلى إدارة المشاريع، إلى هندسة الذكاء الاصطناعي.">From data analysis to project delivery to AI engineering.</p>
       </div>
       <ol class="path">
         <li>
           <span class="when">2024</span><span class="line" aria-hidden="true"></span>
           <div class="what">
-            <h3>Data Analyst Intern</h3>
-            <p class="where">Saudi Authority for Intellectual Property (SAIP), Jun to Oct 2024</p>
-            <p>Analyzed patent and IP data for 4 published SAIP reports, including the Wind Energy Patent Landscape and the 2024 Semi-Annual IP Statistical Report. Built interactive Power BI dashboards.</p>
+            <h3 data-ar="محلل بيانات متدرب">Data Analyst Intern</h3>
+            <p class="where" data-ar="الهيئة السعودية للملكية الفكرية (SAIP)، يونيو إلى أكتوبر 2024">Saudi Authority for Intellectual Property (SAIP), Jun to Oct 2024</p>
+            <p data-ar="حللت بيانات براءات الاختراع والملكية الفكرية لـ 4 تقارير منشورة، منها مشهد براءات اختراع طاقة الرياح والتقرير الإحصائي النصف سنوي 2024. وبنيت لوحات Power BI تفاعلية.">Analyzed patent and IP data for 4 published SAIP reports, including the Wind Energy Patent Landscape and the 2024 Semi-Annual IP Statistical Report. Built interactive Power BI dashboards.</p>
           </div>
         </li>
         <li>
           <span class="when">2025</span><span class="line" aria-hidden="true"></span>
           <div class="what">
-            <h3>B.Sc. in Computer Science</h3>
-            <p class="where">King Saud University, May 2025</p>
-            <p>Coursework in AI, data structures, algorithms, database systems and statistics. Graduation project: AutoGate.</p>
+            <h3 data-ar="بكالوريوس علوم الحاسب">B.Sc. in Computer Science</h3>
+            <p class="where" data-ar="جامعة الملك سعود، مايو 2025">King Saud University, May 2025</p>
+            <p data-ar="مقررات في الذكاء الاصطناعي وهياكل البيانات والخوارزميات وقواعد البيانات والإحصاء. مشروع التخرج: AutoGate.">Coursework in AI, data structures, algorithms, database systems and statistics. Graduation project: AutoGate.</p>
           </div>
         </li>
         <li>
           <span class="when">2025–26</span><span class="line" aria-hidden="true"></span>
           <div class="what">
-            <h3>Project Management Officer</h3>
-            <p class="where">Premium Residency Center, Sep 2025 to Jul 2026</p>
-            <p>Managed 20+ digital transformation projects from planning to closure. Tracked KPIs, risks and milestones in status reports for leadership, governed change requests, and standardized PMO templates.</p>
+            <h3 data-ar="مسؤول مكتب إدارة المشاريع (PMO)">Project Management Officer</h3>
+            <p class="where" data-ar="مركز الإقامة المميزة، سبتمبر 2025 إلى يوليو 2026">Premium Residency Center, Sep 2025 to Jul 2026</p>
+            <p data-ar="أدرت أكثر من 20 مشروع تحول رقمي من التخطيط حتى الإغلاق. تابعت مؤشرات الأداء والمخاطر والمعالم في تقارير للقيادة، وحوكمت طلبات التغيير، ووحّدت نماذج مكتب إدارة المشاريع.">Managed 20+ digital transformation projects from planning to closure. Tracked KPIs, risks and milestones in status reports for leadership, governed change requests, and standardized PMO templates.</p>
           </div>
         </li>
         <li class="now">
           <span class="when">2026</span><span class="line" aria-hidden="true"></span>
           <div class="what">
-            <h3>AI Engineering Bootcamp (AIEP)</h3>
-            <p class="where">Olo Academy with the Ministry of Communications and Information Technology, Sep to Nov 2026</p>
-            <p>200-hour, project-based program in ML, deep learning, computer vision, LLM applications and deployment. Selected for one of 50 seats from 5,000+ applicants. Capstone: Mirqab.</p>
+            <h3 data-ar="معسكر هندسة الذكاء الاصطناعي (AIEP)">AI Engineering Bootcamp (AIEP)</h3>
+            <p class="where" data-ar="أكاديمية علو مع وزارة الاتصالات وتقنية المعلومات، سبتمبر إلى نوفمبر 2026">Olo Academy with the Ministry of Communications and Information Technology, Sep to Nov 2026</p>
+            <p data-ar="برنامج تطبيقي مدته 200 ساعة في تعلم الآلة والتعلم العميق والرؤية الحاسوبية وتطبيقات النماذج اللغوية والنشر. اختِرت لأحد 50 مقعداً من بين أكثر من 5,000 متقدم. مشروع التخرج: مرقاب.">200-hour, project-based program in ML, deep learning, computer vision, LLM applications and deployment. Selected for one of 50 seats from 5,000+ applicants. Capstone: Mirqab.</p>
           </div>
         </li>
       </ol>
       <div class="creds">
         <div>
-          <h3>Certifications</h3>
+          <h3 data-ar="الشهادات">Certifications</h3>
           <ul>
-            <li>Certified Associate in Project Management (CAPM), PMI, 2026</li>
-            <li>Data Science Program, Saudi Digital Academy, 2025</li>
-            <li>Supervised Machine Learning, DeepLearning.AI and Stanford</li>
-            <li>Data Analysis with Python, Coursera</li>
-            <li>MCIT Junior Data Scientist, INE</li>
+            <li data-ar="شهادة CAPM في إدارة المشاريع، PMI، 2026">Certified Associate in Project Management (CAPM), PMI, 2026</li>
+            <li data-ar="برنامج علم البيانات، الأكاديمية السعودية الرقمية، 2025">Data Science Program, Saudi Digital Academy, 2025</li>
+            <li data-ar="تعلم الآلة الموجّه، DeepLearning.AI وستانفورد">Supervised Machine Learning, DeepLearning.AI and Stanford</li>
+            <li data-ar="تحليل البيانات بـ Python، Coursera">Data Analysis with Python, Coursera</li>
+            <li data-ar="عالم بيانات مبتدئ، وزارة الاتصالات وتقنية المعلومات، INE">MCIT Junior Data Scientist, INE</li>
           </ul>
         </div>
         <div>
-          <h3>Languages</h3>
+          <h3 data-ar="اللغات">Languages</h3>
           <ul>
-            <li>Arabic, native</li>
-            <li>English, professional working proficiency</li>
+            <li data-ar="العربية، اللغة الأم">Arabic, native</li>
+            <li data-ar="الإنجليزية، مستوى مهني">English, professional working proficiency</li>
           </ul>
         </div>
       </div>
@@ -522,57 +518,58 @@ footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; bo
   <!-- CONTACT -->
   <section id="contact">
     <div class="wrap contact">
-      <h2>Hiring for AI, ML or data in Riyadh? Let's talk.</h2>
+      <h2 data-ar="تبحث عن مهندس ذكاء اصطناعي أو بيانات في الرياض؟ خلنا نتكلم.">Hiring for AI, ML or data in Riyadh? Let's talk.</h2>
       <dl>
-        <dt>Email</dt><dd>nasserhqsha@gmail.com</dd>
-        <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/nasser-haqshah/" target="_blank" rel="noopener">linkedin.com/in/nasser-haqshah</a></dd>
-        <dt>GitHub</dt><dd><a href="https://github.com/NasserHaqsha" target="_blank" rel="noopener">github.com/NasserHaqsha</a></dd>
-        <dt>Status</dt><dd>Saudi national, based in Riyadh, available now</dd>
+        <dt data-ar="الإيميل">Email</dt><dd><bdi>nasserhqsha@gmail.com</bdi></dd>
+        <dt data-ar="السيرة">CV</dt><dd><a href="https://nasserhaqsha.github.io/cv.pdf" target="_blank" rel="noopener" data-ar="تحميل PDF">Download PDF</a></dd>
+        <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/nasser-haqshah/" target="_blank" rel="noopener"><bdi>linkedin.com/in/nasser-haqshah</bdi></a></dd>
+        <dt>GitHub</dt><dd><a href="https://github.com/NasserHaqsha" target="_blank" rel="noopener"><bdi>github.com/NasserHaqsha</bdi></a></dd>
+        <dt data-ar="الحالة">Status</dt><dd data-ar="سعودي، مقيم في الرياض، متاح الآن">Saudi national, based in Riyadh, available now</dd>
       </dl>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap">Nasser Al-Haqshah, 2026. Built as one HTML page with no tracking.</div>
+  <div class="wrap" data-ar="ناصر هقشه، 2026. صفحة HTML واحدة بلا أي تتبع.">Nasser Al-Haqshah, 2026. Built as one HTML page with no tracking.</div>
 </footer>
 
 <script>
-/* ---------------- facts for the search box ---------------- */
+/* ---------------- facts for the search box: [source, English, source in Arabic, Arabic] ---------------- */
 const FACTS = [
-  ["Mirqab", "Detects and tracks drones (UAVs) in images, video and live camera feeds, reaching AP50 0.874 against a 0.117 baseline."],
-  ["Mirqab", "Generalizes to new threats: AP50 0.803 on 6 drone types never seen in training."],
-  ["Mirqab", "Writes fact-checked incident reports with an offline RAG pipeline, with 0 invented numbers across 12 tests."],
-  ["Mirqab", "Raises threat alerts with evidence close-ups, and a human operator confirms or dismisses every incident."],
-  ["Mirqab", "Ships an Arabic and English web platform with an operations dashboard, an incident log and face blurring for privacy."],
-  ["Mirqab", "Built as the AIEP capstone in a team of 4, from October to November 2026."],
-  ["Deraa", "Checks company cybersecurity policies in Arabic or English against the NCA NCNICC-1:2025 controls: 65 main and 47 sub-controls."],
-  ["Deraa", "Rules each control compliant, partial or non-compliant, with a verbatim quote from the policy as proof."],
-  ["Deraa", "Uses hybrid retrieval: BM25 plus BGE-M3 embeddings in FAISS, with a reranker on top."],
-  ["Deraa", "A fine-tuned AraBERT classifier routes Arabic policy passages to 22 subdomains, benchmarked against a TF-IDF baseline."],
-  ["Deraa", "A local LLM judge returns structured JSON behind an evidence guard that blocks hallucinations by checking every quote exists word for word; scores are computed in code, not by the LLM."],
-  ["Deraa", "Runs fully offline on local models, chosen over a cloud API for reliability and data privacy."],
-  ["Semantic search", "Built the retrieval step of a RAG system that finds the 10 most relevant of 49,457 biology passages for each question."],
-  ["Semantic search", "Implemented BM25 and the nDCG@10 metric from scratch as a baseline."],
-  ["Semantic search", "Moved to dense semantic search with Qwen3-Embedding-0.6B embeddings on a T4 GPU, improving ranking quality (nDCG@10) by 51% and recall by 49%."],
-  ["Trip agent", "Built a LangGraph agent that estimates trip costs, running a local Qwen2.5-1.5B-Instruct LLM on a Colab T4 GPU."],
-  ["AutoGate", "KSU graduation project: a touch-free parking gate that reads license plates in real time with computer vision, logs entries in MySQL and shows them on a PHP web dashboard."],
-  ["Kaggle", "Competed in the Olo Academy Arabic calligraphy classification challenge: 12 script classes, scored by Macro-F1."],
-  ["Bootcamp", "Trained a CNN from scratch in PyTorch for Intel scene image classification, and fine-tuned ResNet18 with transfer learning for flower images."],
-  ["Bootcamp", "Labs covered backpropagation from scratch, transformers, YOLOS object detection, ViT, CLIP, Whisper and LangGraph agents."],
-  ["PMO role", "As Project Management Officer at Premium Residency Center, managed 20+ digital transformation projects from planning and scheduling to delivery and closure."],
-  ["PMO role", "Tracked KPIs, risks and milestones in recurring status reports for leadership and stakeholders."],
-  ["PMO role", "Governed change requests and reviewed deliverables, contracts and completion certificates for compliance."],
-  ["PMO role", "Standardized PMO templates and documentation, and coordinated business and technical teams to remove blockers."],
-  ["SAIP internship", "As Data Analyst Intern at the Saudi Authority for Intellectual Property, analyzed patent and IP data for 4 published reports."],
-  ["SAIP internship", "Built interactive Power BI dashboards that turned raw IP statistics into decision-ready views."],
-  ["AIEP", "Selected from 5,000+ applicants for one of 50 seats in the 200-hour AI Engineering Bootcamp by Olo Academy with MCIT."],
-  ["Education", "B.Sc. in Computer Science from King Saud University, May 2025, with coursework in AI, algorithms, databases and statistics."],
-  ["Certifications", "Certified Associate in Project Management (CAPM) from PMI in 2026, plus the Saudi Digital Academy Data Science Program and Stanford's Supervised Machine Learning course."],
-  ["Languages", "Arabic native speaker with professional working proficiency in English."],
-  ["Toolbox", "Works daily in Python, SQL, PyTorch, Hugging Face Transformers, scikit-learn, pandas, FAISS, LangGraph, Power BI and Git."],
-  ["Availability", "Saudi national based in Riyadh, available to start immediately in AI, ML or data roles."],
-  ["Teamwork", "Built both Mirqab and Deraa in teams of 4, and coordinated business and technical teams across 20+ projects."]
+  ["Mirqab", "Detects and tracks drones (UAVs) in images, video and live camera feeds, reaching AP50 0.874 against a 0.117 baseline.", "مرقاب", "يكتشف الدرونات (الطائرات المسيّرة) ويتتبعها في الصور والفيديو والبث المباشر، بدقة AP50 تبلغ 0.874 مقابل 0.117 للنموذج الأساسي."],
+  ["Mirqab", "Generalizes to new threats: AP50 0.803 on 6 drone types never seen in training.", "مرقاب", "يتعامل مع تهديدات جديدة: دقة AP50 تبلغ 0.803 على 6 أنواع من الدرونات لم يرها أثناء التدريب."],
+  ["Mirqab", "Writes fact-checked incident reports with an offline RAG pipeline, with 0 invented numbers across 12 tests.", "مرقاب", "يكتب تقارير حوادث مدققة عبر خط RAG يعمل دون اتصال، بلا أي رقم مختلق في 12 اختباراً."],
+  ["Mirqab", "Raises threat alerts with evidence close-ups, and a human operator confirms or dismisses every incident.", "مرقاب", "يطلق تنبيهات التهديد مع لقطات مقرّبة كدليل، ويؤكد المشغّل البشري كل حادثة أو يرفضها."],
+  ["Mirqab", "Ships an Arabic and English web platform with an operations dashboard, an incident log and face blurring for privacy.", "مرقاب", "منصة ويب بالعربية والإنجليزية فيها لوحة عمليات وسجل حوادث وتمويه للوجوه لحماية الخصوصية."],
+  ["Mirqab", "Built as the AIEP capstone in a team of 4, from October to November 2026.", "مرقاب", "بُني كمشروع تخرج معسكر AIEP ضمن فريق من 4 أشخاص بين أكتوبر ونوفمبر 2026."],
+  ["Deraa", "Checks company cybersecurity policies in Arabic or English against the NCA NCNICC-1:2025 controls: 65 main and 47 sub-controls.", "درع", "يفحص سياسات الأمن السيبراني للشركات بالعربية أو الإنجليزية مقابل ضوابط الهيئة الوطنية للأمن السيبراني NCNICC-1:2025: ‏65 ضابطاً رئيسياً و47 ضابطاً فرعياً."],
+  ["Deraa", "Rules each control compliant, partial or non-compliant, with a verbatim quote from the policy as proof.", "درع", "يحكم على كل ضابط بأنه ممتثل أو ممتثل جزئياً أو غير ممتثل، مع اقتباس حرفي من السياسة كدليل."],
+  ["Deraa", "Uses hybrid retrieval: BM25 plus BGE-M3 embeddings in FAISS, with a reranker on top.", "درع", "يستخدم استرجاعاً هجيناً: BM25 مع تضمينات BGE-M3 في FAISS، وفوقها نموذج لإعادة الترتيب."],
+  ["Deraa", "A fine-tuned AraBERT classifier routes Arabic policy passages to 22 subdomains, benchmarked against a TF-IDF baseline.", "درع", "نموذج AraBERT مضبوط يوجّه مقاطع السياسات العربية إلى 22 مجالاً فرعياً، مقارنةً بنموذج TF-IDF أساسي."],
+  ["Deraa", "A local LLM judge returns structured JSON behind an evidence guard that blocks hallucinations by checking every quote exists word for word; scores are computed in code, not by the LLM.", "درع", "نموذج لغوي محلي يصدر أحكامه بصيغة JSON منظمة، وخلفه حارس أدلة يمنع الهلوسة بالتحقق من وجود كل اقتباس حرفياً، ودرجات الامتثال تُحسب بالكود لا بالنموذج."],
+  ["Deraa", "Runs fully offline on local models, chosen over a cloud API for reliability and data privacy.", "درع", "يعمل بالكامل دون اتصال على نماذج محلية، لموثوقية أعلى وحماية خصوصية البيانات."],
+  ["Semantic search", "Built the retrieval step of a RAG system that finds the 10 most relevant of 49,457 biology passages for each question.", "البحث الدلالي", "بنيت مرحلة الاسترجاع في نظام RAG تجد أنسب 10 مقاطع من بين 49,457 مقطعاً في الأحياء لكل سؤال."],
+  ["Semantic search", "Implemented BM25 and the nDCG@10 metric from scratch as a baseline.", "البحث الدلالي", "برمجت BM25 ومقياس nDCG@10 من الصفر كنقطة مقارنة."],
+  ["Semantic search", "Moved to dense semantic search with Qwen3-Embedding-0.6B embeddings on a T4 GPU, improving ranking quality (nDCG@10) by 51% and recall by 49%.", "البحث الدلالي", "انتقلت إلى البحث الدلالي بتضمينات Qwen3-Embedding-0.6B على معالج T4، فتحسنت جودة الترتيب (nDCG@10) بنسبة 51% والاستدعاء بنسبة 49%."],
+  ["Trip agent", "Built a LangGraph agent that estimates trip costs, running a local Qwen2.5-1.5B-Instruct LLM on a Colab T4 GPU.", "وكيل الرحلات", "بنيت وكيلاً بـ LangGraph يقدّر تكاليف الرحلات، يعمل على نموذج لغوي محلي Qwen2.5-1.5B-Instruct عبر Colab T4."],
+  ["AutoGate", "KSU graduation project: a touch-free parking gate that reads license plates in real time with computer vision, logs entries in MySQL and shows them on a PHP web dashboard.", "AutoGate", "مشروع تخرجي من جامعة الملك سعود: بوابة مواقف تقرأ لوحات السيارات لحظياً بالرؤية الحاسوبية، وتسجل الدخول في MySQL مع لوحة تحكم PHP."],
+  ["Kaggle", "Competed in the Olo Academy Arabic calligraphy classification challenge: 12 script classes, scored by Macro-F1.", "Kaggle", "شاركت في تحدي أكاديمية علو لتصنيف الخطوط العربية على Kaggle: ‏12 نوعاً من الخطوط، والتقييم بمقياس Macro-F1."],
+  ["Bootcamp", "Trained a CNN from scratch in PyTorch for Intel scene image classification, and fine-tuned ResNet18 with transfer learning for flower images.", "المعسكر", "دربت شبكة CNN من الصفر بـ PyTorch لتصنيف صور مشاهد Intel، وضبطت ResNet18 بالتعلم بالنقل لتصنيف صور الزهور."],
+  ["Bootcamp", "Labs covered backpropagation from scratch, transformers, YOLOS object detection, ViT, CLIP, Whisper and LangGraph agents.", "المعسكر", "شملت المعامل الانتشار العكسي من الصفر، والمحوّلات، وكشف الأجسام بـ YOLOS، وViT وCLIP وWhisper، ووكلاء LangGraph."],
+  ["PMO role", "As Project Management Officer at Premium Residency Center, managed 20+ digital transformation projects from planning and scheduling to delivery and closure.", "دور PMO", "بصفتي مسؤول مكتب إدارة المشاريع في مركز الإقامة المميزة، أدرت أكثر من 20 مشروع تحول رقمي من التخطيط إلى التسليم والإغلاق."],
+  ["PMO role", "Tracked KPIs, risks and milestones in recurring status reports for leadership and stakeholders.", "دور PMO", "تابعت مؤشرات الأداء والمخاطر والمعالم في تقارير حالة دورية للقيادة وأصحاب المصلحة."],
+  ["PMO role", "Governed change requests and reviewed deliverables, contracts and completion certificates for compliance.", "دور PMO", "حوكمت طلبات التغيير وراجعت المخرجات والعقود وشهادات الإنجاز للتأكد من الامتثال."],
+  ["PMO role", "Standardized PMO templates and documentation, and coordinated business and technical teams to remove blockers.", "دور PMO", "وحّدت نماذج ووثائق مكتب إدارة المشاريع، ونسّقت بين فرق الأعمال والتقنية لإزالة العوائق."],
+  ["SAIP internship", "As Data Analyst Intern at the Saudi Authority for Intellectual Property, analyzed patent and IP data for 4 published reports.", "تدريب SAIP", "بصفتي محلل بيانات متدرب في الهيئة السعودية للملكية الفكرية، حللت بيانات براءات الاختراع لـ 4 تقارير منشورة."],
+  ["SAIP internship", "Built interactive Power BI dashboards that turned raw IP statistics into decision-ready views.", "تدريب SAIP", "بنيت لوحات Power BI تفاعلية حولت إحصاءات الملكية الفكرية الخام إلى رؤى جاهزة لاتخاذ القرار."],
+  ["AIEP", "Selected from 5,000+ applicants for one of 50 seats in the 200-hour AI Engineering Bootcamp by Olo Academy with MCIT.", "AIEP", "اختِرت من بين أكثر من 5,000 متقدم لأحد 50 مقعداً في معسكر هندسة الذكاء الاصطناعي (200 ساعة) من أكاديمية علو مع وزارة الاتصالات وتقنية المعلومات."],
+  ["Education", "B.Sc. in Computer Science from King Saud University, May 2025, with coursework in AI, algorithms, databases and statistics.", "التعليم", "بكالوريوس علوم الحاسب من جامعة الملك سعود، مايو 2025، مع مقررات في الذكاء الاصطناعي والخوارزميات وقواعد البيانات والإحصاء."],
+  ["Certifications", "Certified Associate in Project Management (CAPM) from PMI in 2026, plus the Saudi Digital Academy Data Science Program and Stanford's Supervised Machine Learning course.", "الشهادات", "شهادة CAPM في إدارة المشاريع من PMI عام 2026، وبرنامج علم البيانات من الأكاديمية السعودية الرقمية، ودورة تعلم الآلة الموجّه من ستانفورد."],
+  ["Languages", "Arabic native speaker with professional working proficiency in English.", "اللغات", "العربية لغتي الأم، وأتقن الإنجليزية بمستوى مهني."],
+  ["Toolbox", "Works daily in Python, SQL, PyTorch, Hugging Face Transformers, scikit-learn, pandas, FAISS, LangGraph, Power BI and Git.", "الأدوات", "أعمل يومياً بـ Python وSQL وPyTorch وHugging Face Transformers وscikit-learn وpandas وFAISS وLangGraph وPower BI وGit."],
+  ["Availability", "Saudi national based in Riyadh, available to start immediately in AI, ML or data roles.", "الجاهزية", "سعودي مقيم في الرياض، ومتاح للبدء فوراً في وظائف الذكاء الاصطناعي وتعلم الآلة والبيانات."],
+  ["Teamwork", "Built both Mirqab and Deraa in teams of 4, and coordinated business and technical teams across 20+ projects.", "العمل الجماعي", "بنيت مرقاب ودرع ضمن فرق من 4 أشخاص، ونسّقت بين فرق الأعمال والتقنية في أكثر من 20 مشروعاً."]
 ];
 
 const SYN = {
@@ -621,22 +618,82 @@ const SYN = {
   available: "available immediately riyadh",
   hire: "available immediately riyadh",
   team: "team teams coordinated",
-  saudi: "saudi nca saip riyadh"
+  saudi: "saudi nca saip riyadh",
+  /* Arabic keys are written already normalized (see normAr) */
+  "اختلاق": "invented evidence verbatim guard quote دليل اقتباس حرفي مختلق حارس",
+  "مختلق": "invented evidence verbatim guard دليل اقتباس حرفي",
+  "يختلق": "invented evidence verbatim guard دليل اقتباس حرفي",
+  "هلوس": "invented evidence verbatim guard دليل اقتباس حرفي حارس",
+  "يخترع": "invented evidence verbatim دليل اقتباس حرفي",
+  "رؤي": "detects tracks images video plates cnn yolos يكتشف يتتبع صور فيديو لوحات",
+  "حاسوبي": "detects tracks images video plates cnn يكتشف صور فيديو لوحات",
+  "صور": "images detects cnn صور يكتشف",
+  "كاميرا": "camera video detects فيديو يكتشف",
+  "درون": "drones uavs درونات",
+  "مسير": "drones uavs درونات",
+  "بحث": "retrieval semantic bm25 embeddings ndcg استرجاع دلالي",
+  "استرجاع": "retrieval bm25 embeddings faiss ndcg استرجاع",
+  "دلالي": "semantic retrieval embeddings دلالي",
+  "عربي": "arabic arabert calligraphy عربي خطوط",
+  "معالج": "arabert classifier passages policies مقاطع سياسات نموذج",
+  "لغوي": "llm arabert qwen نموذج لغوي",
+  "لغه": "arabert llm english arabic",
+  "وكيل": "langgraph agent وكيل",
+  "وكلاء": "langgraph agent وكيل",
+  "مشاريع": "pmo projects kpis milestones مشاريع اداره مؤشرات",
+  "مشروع": "pmo projects مشاريع اداره",
+  "اداره": "pmo projects managed مشاريع اداره",
+  "بيانات": "data dashboards power bi patent بيانات لوحات",
+  "تحليل": "analyzed data power bi بيانات حللت",
+  "لوحات": "dashboards power bi لوحات",
+  "امن": "cybersecurity nca controls compliant امن سيبراني ضوابط",
+  "سيبراني": "cybersecurity nca controls امن سيبراني ضوابط",
+  "امتثال": "compliant controls nca ممتثل ضوابط",
+  "متاح": "available immediately riyadh متاح فورا",
+  "تبدا": "available immediately متاح فورا",
+  "بدء": "available immediately متاح فورا",
+  "توظيف": "available immediately متاح",
+  "تقدر": "available immediately متاح",
+  "خصوصي": "privacy face blurring offline خصوصيه",
+  "شهاد": "capm certified شهاده",
+  "جامع": "king saud university جامعه",
+  "تخرج": "graduation university جامعه تخرج",
+  "نتائج": "ap50 ndcg recall 51 دقه تحسنت",
+  "ارقام": "ap50 ndcg recall 51 مختلق",
+  "دق": "ap50 accuracy دقه",
+  "فريق": "team teams فريق فرق",
+  "جماعي": "team teams فريق فرق"
 };
-const STOP = new Set("ai thing things up make making made a an the and or of to in on for with by from at as is are was were be been it its this that these those do does did you your yours he his him i me my we our they them their how what which who whom whose why when where can could would should will about into than then so not no any some more most very has have had just also there here".split(" "));
 
-const stem = w => {
+const STOP_EN = "ai thing things up make making made a an the and or of to in on for with by from at as is are was were be been it its this that these those do does did you your yours he his him i me my we our they them their how what which who whom whose why when where can could would should will about into than then so not no any some more most very has have had just also there here".split(" ");
+const STOP_AR = "في من على عن الي الا هل ما ماذا كيف متي لماذا هو هي انت انا مع او و التي الذي هذا هذه تم كان لدي عندك عندي لديك كل بين ثم قد لا لم لن ان اي بعد قبل عند حتي ذكاء اصطناعي".split(" ");
+const STOP = new Set(STOP_EN.concat(STOP_AR));
+
+const isAr = t => /[ء-ي]/.test(t);
+function normAr(s) {
+  return s.replace(/[ً-ٰٟـ]/g, "").replace(/[أإآ]/g, "ا").replace(/ة/g, "ه").replace(/ى/g, "ي").replace(/ؤ/g, "و").replace(/ئ/g, "ي");
+}
+function stemAr(w) {
+  if (w.length > 5 && /^(وال|بال|كال|فال)/.test(w)) w = w.slice(3);
+  else if (w.length > 4 && /^(ال|لل)/.test(w)) w = w.slice(2);
+  if (w.length > 5 && /(ات|ين|ون)$/.test(w)) w = w.slice(0, -2);
+  if (w.length > 3 && w.endsWith("ه")) w = w.slice(0, -1);
+  return w;
+}
+function stemEn(w) {
   if (w.length > 5 && w.endsWith("ing")) w = w.slice(0, -3);
   else if (w.length > 4 && w.endsWith("ed")) w = w.slice(0, -2);
   else if (w.length > 3 && w.endsWith("s") && !w.endsWith("ss")) w = w.slice(0, -1);
   return w;
-};
-const tok = s => (s.toLowerCase().match(/[a-z0-9@.+%-]+/g) || [])
+}
+const stemAny = w => isAr(w) ? stemAr(w) : stemEn(w);
+const tok = s => (normAr(s.toLowerCase()).match(/[a-z0-9@.+%-]+|[ء-ي]+/g) || [])
   .map(t => t.replace(/^[.\-]+|[.\-]+$/g, ""))
   .filter(t => t && !STOP.has(t))
-  .map(stem);
+  .map(stemAny)
+  .filter(t => t && !STOP.has(t));
 
-const DOCS = FACTS.map(([src, text]) => ({ src, text, toks: tok(src + " " + text) }));
+const DOCS = FACTS.map(([src, en, srcAr, ar]) => ({ src, en, srcAr, ar, toks: tok(src + " " + en + " " + srcAr + " " + ar) }));
 const N = DOCS.length;
 const avgdl = DOCS.reduce((s, d) => s + d.toks.length, 0) / N;
 const df = new Map();
@@ -644,11 +701,12 @@ DOCS.forEach(d => new Set(d.toks).forEach(t => df.set(t, (df.get(t) || 0) + 1)))
 const idf = t => { const n = df.get(t) || 0; return Math.log(1 + (N - n + 0.5) / (n + 0.5)); };
 
 function expand(q) {
-  const lower = q.toLowerCase();
+  const lower = normAr(q.toLowerCase());
   const weights = new Map();
   tok(q).forEach(t => weights.set(t, 1));
+  const keys = [...weights.keys()];
   for (const [key, extra] of Object.entries(SYN)) {
-    const hit = key.includes(" ") ? lower.includes(key) : [...weights.keys()].some(t => t.startsWith(key));
+    const hit = key.includes(" ") ? lower.includes(key) : keys.some(t => t.startsWith(key));
     if (hit) tok(extra).forEach(t => { if (!weights.has(t)) weights.set(t, 0.6); });
   }
   return weights;
@@ -668,94 +726,90 @@ function bm25(q, k1 = 1.2, b = 0.75) {
 const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 function highlight(text, terms) {
   return text.split(/(\s+)/).map(part => {
-    const core = part.toLowerCase().replace(/^[^a-z0-9@+%]+|[^a-z0-9@+%]+$/g, "");
-    const st = core ? stem(core) : "";
-    return st && terms.has(st) && !STOP.has(core) ? "<mark>" + esc(part) + "</mark>" : esc(part);
+    const core = normAr(part.toLowerCase()).replace(/^[^a-z0-9@+%ء-ي]+|[^a-z0-9@+%ء-ي]+$/g, "");
+    if (!core || STOP.has(core)) return esc(part);
+    return terms.has(stemAny(core)) ? "<mark>" + esc(part) + "</mark>" : esc(part);
   }).join("");
 }
 
+/* ---------------- language ---------------- */
+let LANG = "en";
+const UI = {
+  en: { empty: "No fact matches those words. Try one of the example questions.", copied: "Copied: ", blocked: "Copy is blocked here. Select the address: ", pause: "Pause", play: "Play", toggle: "العربية", title: "Nasser Al-Haqshah", bm25: "BM25 score",
+        q0: "How do you stop an AI from making things up?",
+        ex: ["How do you stop an AI from making things up?", "Computer vision experience", "Arabic NLP", "Search and retrieval results", "Project management", "Data and dashboards", "When can you start?"] },
+  ar: { empty: "لا توجد حقيقة تطابق هذه الكلمات. جرّب أحد الأسئلة المقترحة.", copied: "تم النسخ: ", blocked: "النسخ غير متاح هنا. حدد العنوان: ", pause: "إيقاف", play: "تشغيل", toggle: "English", title: "ناصر هقشه", bm25: "درجة BM25",
+        q0: "كيف تمنع الذكاء الاصطناعي من اختلاق المعلومات؟",
+        ex: ["كيف تمنع الذكاء الاصطناعي من اختلاق المعلومات؟", "خبرة في الرؤية الحاسوبية", "معالجة اللغة العربية", "نتائج البحث والاسترجاع", "إدارة المشاريع", "تحليل البيانات ولوحات Power BI", "متى تقدر تبدأ؟"] }
+};
+const COLS = { en: ["Mirqab", "Deraa", "Semantic search", "Trip agent", "AutoGate", "PMO role", "SAIP internship"],
+               ar: ["مرقاب", "درع", "البحث الدلالي", "وكيل الرحلات", "AutoGate", "دور PMO", "تدريب SAIP"] };
+const COL_LINKS = ["#mirqab", "#deraa", "#search", null, null, "#path", "#path"];
+const SKILLS = [
+  [["Computer vision", "الرؤية الحاسوبية"], [1, 0, 0, 0, 1, 0, 0]],
+  [["Retrieval and RAG", "الاسترجاع وRAG"], [1, 1, 1, 0, 0, 0, 0]],
+  [["LLMs and agents", "النماذج اللغوية والوكلاء"], [1, 1, 0, 1, 0, 0, 0]],
+  [["Arabic NLP", "معالجة اللغة العربية"], [0, 1, 0, 0, 0, 0, 0]],
+  [["Evaluation against baselines", "التقييم مقابل نقاط المقارنة"], [1, 1, 1, 0, 0, 0, 0]],
+  [["Dashboards and web apps", "لوحات المعلومات وتطبيقات الويب"], [1, 0, 0, 0, 1, 0, 1]],
+  [["Reporting and delivery", "التقارير والتسليم"], [0, 0, 0, 0, 0, 1, 1]]
+];
+
 const resultsEl = document.getElementById("results");
 const qEl = document.getElementById("q");
-document.getElementById("fact-count").textContent = N;
+const chipsEl = document.getElementById("chips");
+const toggleBtn = document.getElementById("lang-toggle");
+const scopeToggle = document.getElementById("scope-toggle");
 
 function run(q) {
   const hits = bm25(q);
-  if (!hits.length) {
-    resultsEl.innerHTML = '<li class="empty">No fact matches those words. Try one of the example questions.</li>';
-    return;
-  }
+  if (!hits.length) { resultsEl.innerHTML = `<li class="empty">${UI[LANG].empty}</li>`; return; }
   const top = hits[0].s;
   resultsEl.innerHTML = hits.map((h, i) => `
     <li class="hit">
       <span class="rank">${i + 1}</span>
       <div>
-        <p>${highlight(h.d.text, h.terms)}</p>
-        <div class="src"><b>${esc(h.d.src)}</b><span class="bar"><i style="transform:scaleX(0)"></i></span><span class="score" title="BM25 score">${h.s.toFixed(2)}</span></div>
+        <p>${highlight(LANG === "ar" ? h.d.ar : h.d.en, h.terms)}</p>
+        <div class="src"><b>${esc(LANG === "ar" ? h.d.srcAr : h.d.src)}</b><span class="bar"><i style="transform:scaleX(0)"></i></span><span class="score" title="${UI[LANG].bm25}">${h.s.toFixed(2)}</span></div>
       </div>
     </li>`).join("");
   requestAnimationFrame(() => {
     resultsEl.querySelectorAll(".bar i").forEach((el, i) => { el.style.transform = `scaleX(${(hits[i].s / top).toFixed(3)})`; });
   });
 }
-
-const EXAMPLES = [
-  "How do you stop an AI from making things up?",
-  "Computer vision experience",
-  "Arabic NLP",
-  "Search and retrieval results",
-  "Project management",
-  "Data and dashboards",
-  "When can you start?"
-];
-const chipsEl = document.getElementById("chips");
-EXAMPLES.forEach(ex => {
-  const b = document.createElement("button");
-  b.type = "button"; b.className = "chip"; b.textContent = ex;
-  b.setAttribute("aria-pressed", ex === qEl.value ? "true" : "false");
-  b.addEventListener("click", () => {
-    qEl.value = ex;
-    chipsEl.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b ? "true" : "false"));
-    run(ex);
+function renderChips() {
+  chipsEl.innerHTML = "";
+  chipsEl.setAttribute("aria-label", LANG === "ar" ? "أسئلة مقترحة" : "Example questions");
+  UI[LANG].ex.forEach(ex => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.textContent = ex;
+    b.setAttribute("aria-pressed", ex === qEl.value ? "true" : "false");
+    b.addEventListener("click", () => {
+      qEl.value = ex;
+      chipsEl.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b ? "true" : "false"));
+      run(ex);
+    });
+    chipsEl.appendChild(b);
   });
-  chipsEl.appendChild(b);
-});
+}
 document.getElementById("ask-form").addEventListener("submit", e => {
   e.preventDefault();
   chipsEl.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c.textContent === qEl.value ? "true" : "false"));
   run(qEl.value);
 });
-run(qEl.value);
 
-/* ---------------- copy email ---------------- */
-const copyBtn = document.getElementById("copy-email");
-const copyStatus = document.getElementById("copy-status");
-copyBtn.addEventListener("click", async () => {
-  const email = copyBtn.dataset.email;
-  try {
-    await navigator.clipboard.writeText(email);
-    copyStatus.textContent = "Copied: " + email;
-  } catch (err) {
-    copyStatus.textContent = "Copy is blocked here. Select the address: " + email;
-  }
-});
-
-/* ---------------- skills matrix ---------------- */
-const COLS = ["Mirqab", "Deraa", "Semantic search", "Trip agent", "AutoGate", "PMO role", "SAIP internship"];
-const SKILLS = [
-  ["Computer vision", [1, 0, 0, 0, 1, 0, 0]],
-  ["Retrieval and RAG", [1, 1, 1, 0, 0, 0, 0]],
-  ["LLMs and agents", [1, 1, 0, 1, 0, 0, 0]],
-  ["Arabic NLP", [0, 1, 0, 0, 0, 0, 0]],
-  ["Evaluation against baselines", [1, 1, 1, 0, 0, 0, 0]],
-  ["Dashboards and web apps", [1, 0, 0, 0, 1, 0, 1]],
-  ["Reporting and delivery", [0, 0, 0, 0, 0, 1, 1]]
-];
+const thead = document.querySelector("#matrix thead tr");
 const tbody = document.querySelector("#matrix tbody");
-tbody.innerHTML = SKILLS.map(([name, row], r) => `
-  <tr data-row="${r}">
-    <th scope="row"><button type="button" aria-pressed="false">${name}</button></th>
-    ${row.map((v, c) => `<td class="${v ? "yes" : "no"}" data-col="${c}"><span class="dot" role="img" aria-label="${v ? "Used in " + COLS[c] : "Not used in " + COLS[c]}"></span></td>`).join("")}
-  </tr>`).join("");
+function renderMatrix() {
+  const L = LANG === "ar" ? 1 : 0;
+  thead.innerHTML = `<th scope="col" class="skill-col">${LANG === "ar" ? "المهارة" : "Skill"}</th>` +
+    COLS[LANG].map((c, i) => `<th scope="col">${COL_LINKS[i] ? `<a href="${COL_LINKS[i]}">${c}</a>` : c}</th>`).join("");
+  tbody.innerHTML = SKILLS.map(([names, row], r) => `
+    <tr data-row="${r}">
+      <th scope="row"><button type="button" aria-pressed="false">${names[L]}</button></th>
+      ${row.map((v, c) => `<td class="${v ? "yes" : "no"}" data-col="${c}"><span class="dot" role="img" aria-label="${(v ? (LANG === "ar" ? "مستخدمة في " : "Used in ") : (LANG === "ar" ? "غير مستخدمة في " : "Not used in ")) + COLS[LANG][c]}"></span></td>`).join("")}
+    </tr>`).join("");
+}
 tbody.addEventListener("click", e => {
   const btn = e.target.closest("button"); if (!btn) return;
   const tr = btn.closest("tr");
@@ -768,14 +822,45 @@ tbody.addEventListener("click", e => {
   tbody.querySelectorAll("td").forEach(td => { if (cols.includes(+td.dataset.col)) td.classList.add("col-on"); });
 });
 
+let scopePlaying = true;
+function setLang(l, opts = {}) {
+  LANG = l === "ar" ? "ar" : "en";
+  const root = document.documentElement;
+  root.lang = LANG; root.dir = LANG === "ar" ? "rtl" : "ltr";
+  document.querySelectorAll("[data-ar]").forEach(el => {
+    if (el.dataset.en === undefined) el.dataset.en = el.innerHTML;
+    el.innerHTML = LANG === "ar" ? el.dataset.ar : el.dataset.en;
+  });
+  document.querySelectorAll(".fc").forEach(el => { el.textContent = N; });
+  document.title = UI[LANG].title;
+  toggleBtn.textContent = UI[LANG].toggle;
+  toggleBtn.lang = LANG === "ar" ? "en" : "ar";
+  toggleBtn.setAttribute("aria-label", LANG === "ar" ? "Switch to English" : "التبديل إلى العربية");
+  scopeToggle.textContent = scopePlaying ? UI[LANG].pause : UI[LANG].play;
+  if (!opts.keepQuery) qEl.value = UI[LANG].q0;
+  renderChips(); renderMatrix(); run(qEl.value);
+  try { localStorage.setItem("lang", LANG); } catch (e) {}
+}
+toggleBtn.addEventListener("click", () => setLang(LANG === "ar" ? "en" : "ar"));
+
+/* ---------------- copy email ---------------- */
+const copyBtn = document.getElementById("copy-email");
+const copyStatus = document.getElementById("copy-status");
+copyBtn.addEventListener("click", async () => {
+  const email = copyBtn.dataset.email;
+  try { await navigator.clipboard.writeText(email); copyStatus.innerHTML = esc(UI[LANG].copied) + "<bdi>" + email + "</bdi>"; }
+  catch (err) { copyStatus.innerHTML = esc(UI[LANG].blocked) + "<bdi>" + email + "</bdi>"; }
+});
+
 /* ---------------- Mirqab scope illustration ---------------- */
 (function () {
   const cv = document.getElementById("scope");
   const ctx = cv.getContext("2d");
-  const toggle = document.getElementById("scope-toggle");
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let playing = !reduce, visible = true, raf = 0, t0 = performance.now(), tPaused = 0, W = 0, H = 0;
+  let visible = true, raf = 0, t0 = performance.now(), tPaused = 0, W = 0, H = 0;
+  scopePlaying = !reduce;
   const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const LIGHT = "#E7EBE2";
   const targets = [
     { a: .38, b: .22, fx: .11, fy: .17, ph: 0.4, cx: .30, cy: .40, s: 1.0, id: "T-01", conf: .93 },
     { a: .30, b: .16, fx: .08, fy: .13, ph: 2.1, cx: .62, cy: .34, s: .8, id: "T-02", conf: .88 },
@@ -786,9 +871,7 @@ tbody.addEventListener("click", e => {
     const r = cv.getBoundingClientRect(), d = Math.min(window.devicePixelRatio || 1, 2);
     W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0);
   }
-  function pos(o, t) {
-    return [W * (o.cx + o.a * .5 * Math.sin(t * o.fx + o.ph)), H * (o.cy + o.b * .5 * Math.sin(t * o.fy * 1.3 + o.ph * .7))];
-  }
+  const pos = (o, t) => [W * (o.cx + o.a * .5 * Math.sin(t * o.fx + o.ph)), H * (o.cy + o.b * .5 * Math.sin(t * o.fy * 1.3 + o.ph * .7))];
   function drone(x, y, s, col) {
     ctx.save(); ctx.translate(x, y); ctx.scale(s, s); ctx.strokeStyle = col; ctx.fillStyle = col; ctx.lineWidth = 1.6;
     ctx.beginPath(); ctx.moveTo(-9, -9); ctx.lineTo(9, 9); ctx.moveTo(9, -9); ctx.lineTo(-9, 9); ctx.stroke();
@@ -796,64 +879,65 @@ tbody.addEventListener("click", e => {
     ctx.fillRect(-3, -3, 6, 6); ctx.restore();
   }
   function frame(now) {
-    const t = ((playing ? now - t0 : tPaused) / 1000);
-    const ink = css("--ink"), signal = css("--signal"), mark = css("--mark");
+    const t = (scopePlaying ? now - t0 : tPaused) / 1000;
+    const signal = css("--signal"), mark = css("--mark");
     const dark = getComputedStyle(document.documentElement).colorScheme === "dark";
-    const sky = dark ? "#0B111B" : ink;
+    const sky = dark ? "#0B111B" : css("--ink");
     ctx.fillStyle = sky; ctx.fillRect(0, 0, W, H);
-    // range rings from the watchtower at bottom-left
     ctx.strokeStyle = "rgba(255,255,255,.08)"; ctx.lineWidth = 1;
     for (let r = 1; r <= 6; r++) { ctx.beginPath(); ctx.arc(W * .06, H * 1.02, r * W * .17, Math.PI * 1.5, Math.PI * 2); ctx.stroke(); }
-    // sweep
     const ang = Math.PI * 1.5 + ((t * .35) % 1) * Math.PI * .5;
     const g = ctx.createLinearGradient(0, 0, W, 0); g.addColorStop(0, "rgba(255,255,255,0)"); g.addColorStop(1, "rgba(255,255,255,.06)");
     ctx.save(); ctx.translate(W * .06, H * 1.02); ctx.rotate(ang); ctx.fillStyle = g;
     ctx.beginPath(); ctx.moveTo(0, 0); ctx.arc(0, 0, W * 1.2, -0.12, 0); ctx.closePath(); ctx.fill(); ctx.restore();
-    // horizon
     ctx.fillStyle = "rgba(255,255,255,.05)"; ctx.fillRect(0, H * .86, W, H * .14);
     ctx.font = "500 12px Handjet, Readex Pro, sans-serif"; ctx.textBaseline = "bottom";
     targets.forEach(o => {
       const [x, y] = pos(o, t);
-      // trail
       ctx.strokeStyle = "rgba(255,255,255,.18)"; ctx.setLineDash([2, 4]); ctx.beginPath();
       for (let k = 0; k <= 24; k++) { const [px, py] = pos(o, t - k * .12); k ? ctx.lineTo(px, py) : ctx.moveTo(px, py); }
       ctx.stroke(); ctx.setLineDash([]);
-      drone(x, y, o.s, "#E7EBE2");
+      drone(x, y, o.s, LIGHT);
       const bw = 34 * o.s + 14, bh = 30 * o.s + 12, lx = x - bw / 2, ly = y - bh / 2, c = 7;
       ctx.strokeStyle = signal; ctx.lineWidth = 1.8; ctx.beginPath();
       [[lx, ly, 1, 1], [lx + bw, ly, -1, 1], [lx, ly + bh, 1, -1], [lx + bw, ly + bh, -1, -1]].forEach(([px, py, sx, sy]) => {
         ctx.moveTo(px, py + sy * c); ctx.lineTo(px, py); ctx.lineTo(px + sx * c, py);
       });
       ctx.stroke();
-      const conf = (o.conf + .03 * Math.sin(t * 1.7 + o.ph)).toFixed(2);
-      const label = o.id + "  uav " + conf;
+      const label = o.id + "  uav " + (o.conf + .03 * Math.sin(t * 1.7 + o.ph)).toFixed(2);
       const tw = ctx.measureText(label).width + 10;
       ctx.fillStyle = signal; ctx.fillRect(lx, ly - 16, tw, 15);
       ctx.fillStyle = sky; ctx.fillText(label, lx + 5, ly - 2);
     });
-    // evidence crop indicator on the strongest track
     const [ex, ey] = pos(targets[0], t);
     ctx.strokeStyle = mark; ctx.lineWidth = 1.2; ctx.setLineDash([3, 3]);
     ctx.beginPath(); ctx.moveTo(ex + 26, ey); ctx.lineTo(W - 92, 36); ctx.stroke(); ctx.setLineDash([]);
-    ctx.strokeStyle = mark; ctx.strokeRect(W - 92, 14, 78, 58);
+    ctx.strokeRect(W - 92, 14, 78, 58);
     ctx.save(); ctx.beginPath(); ctx.rect(W - 92, 14, 78, 58); ctx.clip();
-    ctx.fillStyle = sky; ctx.fillRect(W - 92, 14, 78, 58); drone(W - 53, 43, 2.0, "#E7EBE2"); ctx.restore();
+    ctx.fillStyle = sky; ctx.fillRect(W - 92, 14, 78, 58); drone(W - 53, 43, 2.0, LIGHT); ctx.restore();
     ctx.fillStyle = mark; ctx.fillText("evidence", W - 90, 88);
-    if (playing && visible) raf = requestAnimationFrame(frame);
+    if (scopePlaying && visible) raf = requestAnimationFrame(frame);
   }
   function start() { cancelAnimationFrame(raf); raf = requestAnimationFrame(frame); }
   size(); frame(performance.now()); start();
-  window.addEventListener("resize", () => { size(); if (!playing) frame(performance.now()); });
-  toggle.textContent = playing ? "Pause" : "Play";
-  toggle.addEventListener("click", () => {
-    if (playing) { tPaused = performance.now() - t0; playing = false; toggle.textContent = "Play"; }
-    else { t0 = performance.now() - tPaused; playing = true; toggle.textContent = "Pause"; start(); }
+  window.addEventListener("resize", () => { size(); cancelAnimationFrame(raf); frame(performance.now()); });
+  scopeToggle.addEventListener("click", () => {
+    if (scopePlaying) { tPaused = performance.now() - t0; scopePlaying = false; }
+    else { t0 = performance.now() - tPaused; scopePlaying = true; start(); }
+    scopeToggle.textContent = scopePlaying ? UI[LANG].pause : UI[LANG].play;
   });
   if ("IntersectionObserver" in window) {
-    new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible && playing) start(); }, { threshold: 0 }).observe(cv);
+    new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible && scopePlaying) start(); }, { threshold: 0 }).observe(cv);
   }
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (!playing) frame(performance.now()); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (!scopePlaying) frame(performance.now()); });
 })();
+
+/* ---------------- start ---------------- */
+let startLang = "en";
+try { if (localStorage.getItem("lang") === "ar") startLang = "ar"; } catch (e) {}
+if (location.hash === "#ar") startLang = "ar";
+if (location.hash === "#en") startLang = "en";
+setLang(startLang);
 </script>
 </body>
 </html>
