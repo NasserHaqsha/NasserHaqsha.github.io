@@ -92,7 +92,7 @@ bdi { unicode-bidi: isolate; }
 .place { color: var(--sand); font-size: var(--step--1); }
 .name {
   font-family: var(--font-display); font-weight: 700; font-size: clamp(3.4rem, 9vw, 6.6rem);
-  line-height: .86; letter-spacing: .01em; margin-top: .5rem;
+  line-height: .86; letter-spacing: .01em;
   text-shadow: 0 0 30px rgba(10, 13, 36, .9);
 }
 html[lang="ar"] .name { line-height: 1.05; }
@@ -114,7 +114,7 @@ html[lang="ar"] .name { line-height: 1.05; }
 
 .hero-room { flex: 1 0 auto; min-height: clamp(210px, 34vh, 400px); }
 .hero-foot {
-  display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem;
+  display: flex; justify-content: flex-end; align-items: flex-end; gap: 1rem;
   padding-block: 0 1.1rem; font-size: .78rem; color: rgba(239, 231, 214, .78);
   text-shadow: 0 0 12px rgba(10, 13, 36, 1);
 }
@@ -288,7 +288,6 @@ footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; ba
 @media (max-width: 560px) {
   .top nav { display: none; }
   .thesis { font-size: 1.35rem; }
-  .hero-foot { flex-direction: column; align-items: flex-start; }
   .more { grid-template-columns: 1fr; }
   .more article:nth-child(2n) { padding-inline-start: 0; border-inline-start: 0; }
   .mrow, .axis { grid-template-columns: 7.5rem 1fr 3rem; }
@@ -311,7 +310,7 @@ footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; ba
   <section class="hero" aria-labelledby="hero-name">
     <canvas id="najd" aria-hidden="true"></canvas>
     <header class="wrap top">
-      <a class="who" href="#top" data-ar="ناصر هقشه">Nasser Al-Haqshah</a>
+      <a class="who" href="#top" data-ar="ناصر آل هقشه">Nasser Al-Haqshah</a>
       <div class="right">
         <nav aria-label="Sections">
           <a href="#work" data-ar="الأعمال">Work</a>
@@ -324,8 +323,7 @@ footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; ba
     </header>
 
     <div class="wrap hero-copy">
-      <p class="place" data-ar="من الرياض، في قلب نجد">From Riyadh, in the heart of Najd</p>
-      <h1 class="name" id="hero-name" data-ar="&lt;span&gt;ناصر&lt;/span&gt;&lt;span&gt;هقشه&lt;/span&gt;"><span>Nasser</span><span>Al-Haqshah</span></h1>
+      <h1 class="name" id="hero-name" data-ar="&lt;span&gt;ناصر&lt;/span&gt;&lt;span&gt;آل هقشه&lt;/span&gt;"><span>Nasser</span><span>Al-Haqshah</span></h1>
       <p class="role" data-ar="مهندس ذكاء اصطناعي. تطبيقات RAG والرؤية الحاسوبية والنماذج اللغوية الكبيرة.">AI engineer. RAG, computer vision and LLM applications.</p>
       <p class="thesis" data-ar="أبني ذكاءً اصطناعياً يُبرز أدلته.">I build AI that shows its evidence.</p>
       <p class="lede" data-ar="أنظمة تقتبس مصدرها قبل أن تحكم، ولا تختلق رقماً. وقبل الذكاء الاصطناعي، تابعت مؤشرات الأداء في أكثر من 20 مشروع تحول رقمي.">Systems that quote their source before they rule, and never invent a number. Before AI, I ran KPI reporting on 20+ digital transformation projects.</p>
@@ -340,7 +338,6 @@ footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; ba
 
     <div class="hero-room" aria-hidden="true"></div>
     <div class="wrap hero-foot">
-      <p data-ar="ليل نجد، يُرسم الآن في متصفحك: حافة طويق وكثبانها تحت سهيل والثريا والجوزاء. مرّر المؤشر على نجمة لامعة لتعرف اسمها، وانزل لتشوف الفجر.">Najd after dark, drawn live in your browser: the Tuwaiq escarpment and its dunes under Suhail, Al-Thurayya and Al-Jawza. Point at a bright star to read its name, and scroll down for the dawn.</p>
       <button type="button" id="sky-toggle">Pause</button>
     </div>
     <div class="star-tip" id="star-tip" aria-hidden="true"></div>
@@ -577,7 +574,7 @@ footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; ba
 </main>
 
 <footer>
-  <div class="wrap" data-ar="ناصر هقشه، 2026. صفحة HTML واحدة بلا أي تتبع. ليل نجد يُرسم مباشرة في متصفحك.">Nasser Al-Haqshah, 2026. One HTML page, no tracking. The night over Najd is drawn live in your browser.</div>
+  <div class="wrap" data-ar="ناصر آل هقشه، 2026.">Nasser Al-Haqshah, 2026.</div>
 </footer>
 
 <script>
@@ -784,7 +781,7 @@ const UI = {
   en: { empty: "No fact matches those words. Try one of the example questions.", copied: "Copied: ", blocked: "Copy is blocked here. Select the address: ", pause: "Pause", play: "Play", toggle: "العربية", title: "Nasser Al-Haqshah", bm25: "BM25 score",
         q0: "How do you stop an AI from making things up?",
         ex: ["How do you stop an AI from making things up?", "Computer vision experience", "Arabic NLP", "Search and retrieval results", "Project management", "Data and dashboards", "When can you start?"] },
-  ar: { empty: "لا توجد حقيقة تطابق هذه الكلمات. جرّب أحد الأسئلة المقترحة.", copied: "تم النسخ: ", blocked: "النسخ غير متاح هنا. حدد العنوان: ", pause: "إيقاف", play: "تشغيل", toggle: "English", title: "ناصر هقشه", bm25: "درجة BM25",
+  ar: { empty: "لا توجد حقيقة تطابق هذه الكلمات. جرّب أحد الأسئلة المقترحة.", copied: "تم النسخ: ", blocked: "النسخ غير متاح هنا. حدد العنوان: ", pause: "إيقاف", play: "تشغيل", toggle: "English", title: "ناصر آل هقشه", bm25: "درجة BM25",
         q0: "كيف تمنع الذكاء الاصطناعي من اختلاق المعلومات؟",
         ex: ["كيف تمنع الذكاء الاصطناعي من اختلاق المعلومات؟", "خبرة في الرؤية الحاسوبية", "معالجة اللغة العربية", "نتائج البحث والاسترجاع", "إدارة المشاريع", "تحليل البيانات ولوحات Power BI", "متى تقدر تبدأ؟"] }
 };
@@ -1021,13 +1018,13 @@ copyBtn.addEventListener("click", async () => {
     skyTop: hex("#070A22"), skyTopDawn: hex("#24306E"),
     skyMid: hex("#121540"), skyMidDawn: hex("#6A4F8E"),
     skyLow: hex("#2C2560"), skyLowDawn: hex("#F4A259"),
-    nearFill: hex("#2A1D3D"), farFill: hex("#2A2457"),
+    nearFill: hex("#2A1D3D"), farFill: hex("#2A2457"), lit: hex("#5B4372"), litDawn: hex("#8E5A5E"),
     nearFillDawn: hex("#3F2638"), farFillDawn: hex("#8A5A72"), night: hex("#0E1230"),
     dune: hex("#D0583A"), sand: hex("#F4B26A"), light: hex("#FFE6C2")
   };
 
   /* terrain: a two-tier limestone escarpment (plateau to the right) above a plain of long dunes */
-  const PLATEAU = 2.35, CAM_H = 2.05, Z_NEAR = 1.0, Z_FAR = 46;
+  const PLATEAU = 2.8, CAM_H = 2.05, Z_NEAR = 1.0, Z_FAR = 46;
   const edge = Z => 0.6 + 2.2 * Math.sin(Z * 0.055) + 0.9 * Math.sin(Z * 0.17 + 1.3) + 0.35 * Math.sin(Z * 0.41 + 0.2);
   function height(x, Z) {
     const e = edge(Z) + (noise(Z * 0.35, 3.1) - 0.5) * 0.5;
@@ -1151,6 +1148,40 @@ copyBtn.addEventListener("click", async () => {
     });
   }
 
+  function mesa(u, k) {
+    const n = noise(u * 0.9, k * 7.3) * 0.6 + noise(u * 2.3, k * 7.3 + 3) * 0.28 + noise(u * 6, k * 3.1) * 0.12;
+    return sstep(0.40, 0.46, n) * 0.5 + sstep(0.56, 0.61, n) * 0.38 + sstep(0.70, 0.73, n) * 0.22 + n * 0.1;
+  }
+  function drawRanges() {
+    const camX = edge(zoff + 2) - 4.8 + mxs * 1.3;
+    const layers = [
+      { k: 0, span: 5.2, amp: 0.13, top: hex("#3B3274"), base: hex("#2B2459"), dot: 0.4, par: 0.6 },
+      { k: 1, span: 3.8, amp: 0.18, top: hex("#30285F"), base: hex("#211A46"), dot: 0.6, par: 1.2 },
+      { k: 2, span: 2.7, amp: 0.24, top: hex("#2A2050"), base: hex("#191333"), dot: 0.85, par: 2.0 }
+    ];
+    const cb = copyBox, step = small ? 5 : 4;
+    layers.forEach(L => {
+      const amp = H * L.amp * (small ? 0.8 : 1), drift = camX * 0.035 * L.par + zoff * 0.004 * L.par;
+      const p = new Path2D(); let first = true;
+      for (let x = -step; x <= W + step; x += step) {
+        const sx = sceneX(x);
+        /* full height in the open sky, scaled down (not cut) where the text sits */
+        const d = Math.max(cb.l - sx, sx - cb.r, 0), avail = Math.max(0, horizon - cb.b - 8);
+        const a = mix(Math.min(amp, avail / 1.15), amp, sstep(0, 180, d));
+        const y = horizon + 2 - mesa(x / W * L.span + drift + L.k * 11, L.k) * a;
+        if (first) { p.moveTo(x, y); first = false; } else p.lineTo(x, y);
+      }
+      const top = mixc(L.top, hex("#2A1A33"), dawnS * 0.75), base = mixc(L.base, hex("#3A2235"), dawnS * 0.6);
+      const body = new Path2D(p); body.lineTo(W + step, horizon + 3); body.lineTo(-step, horizon + 3); body.closePath();
+      const g = ctx.createLinearGradient(0, horizon - amp, 0, horizon);
+      g.addColorStop(0, rgb(top)); g.addColorStop(1, rgb(base));
+      ctx.fillStyle = g; ctx.fill(body);
+      ctx.setLineDash([0.01, 4 + L.k]); ctx.lineCap = "round"; ctx.lineWidth = 1.1 + L.k * 0.35;
+      ctx.strokeStyle = rgb(mixc(C.sand, C.light, 0.3 + dawnS * 0.3), L.dot * (0.85 + 0.15 * dawnS));
+      ctx.stroke(p); ctx.setLineDash([]);
+    });
+  }
+
   function drawLand() {
     const camX = edge(zoff + 2) - 4.8 + mxs * 1.3;
     const dz = (small ? 0.8 : 0.55) * (lite ? 1.6 : 1), cols = Math.round((small ? 70 : 110) * (lite ? 0.6 : 1));
@@ -1164,7 +1195,7 @@ copyBtn.addEventListener("click", async () => {
       const z = Z_NEAR + i * dz - frac;
       if (z < 0.42) continue;
       const Zw = Z_NEAR + (i + base) * dz;
-      const d = Math.min(1, (z - Z_NEAR) / (Z_FAR - Z_NEAR));
+      const d = Math.min(1, Math.max(0, (z - Z_NEAR) / (Z_FAR - Z_NEAR)));
       if (!hazed && d < 0.42) {
         /* haze over the distant land only */
         hazed = true;
@@ -1185,12 +1216,15 @@ copyBtn.addEventListener("click", async () => {
       /* body of this ridge row, hiding what lies behind it */
       const k = Math.pow(d, 0.7);
       const fill = mixc(mixc(C.nearFill, C.farFill, k), mixc(C.nearFillDawn, C.farFillDawn, k), dawnS * 0.8);
+      const lit = mixc(mixc(C.lit, C.litDawn, dawnS), fill, Math.min(1, k * 1.15));
       /* fill only down to the lowest point the next nearer row can reach: no overdraw */
       const zn = z - dz, yb = zn < 0.42 ? H + 2 : Math.min(H + 2, horizon + (CAM_H + 0.12) * f / zn + 1);
       const body = new Path2D(crest); body.lineTo(sxl, yb); body.lineTo(sx0, yb); body.closePath();
-      ctx.fillStyle = rgb(fill); ctx.fill(body);
-      /* evenly spaced dots along the crest; colour follows height: red sand low, pale limestone high */
       const yLow = horizon + CAM_H * f / z, yHigh = horizon + (CAM_H - PLATEAU) * f / z;
+      const fg = ctx.createLinearGradient(0, yLow, 0, yHigh);
+      fg.addColorStop(0, rgb(fill)); fg.addColorStop(0.35, rgb(fill)); fg.addColorStop(1, rgb(lit));
+      ctx.fillStyle = fg; ctx.fill(body);
+      /* evenly spaced dots along the crest; colour follows height: red sand low, pale limestone high */
       const g = ctx.createLinearGradient(0, yLow, 0, yHigh);
       g.addColorStop(0, lowC); g.addColorStop(1, highC);
       const dot = Math.max(0.9, 2.8 * Math.pow(1 - d, 1.5)) * (small ? 0.9 : 1);
@@ -1215,6 +1249,7 @@ copyBtn.addEventListener("click", async () => {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     if (rtl) { ctx.translate(W, 0); ctx.scale(-1, 1); }
     drawSky(T);
+    drawRanges();
     drawLand();
     fadeOut();
   }
