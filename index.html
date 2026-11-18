@@ -112,7 +112,7 @@ html[lang="ar"] .name { line-height: 1.05; }
 .btn svg { width: 1em; height: 1em; }
 .copy-status { font-size: var(--step--1); color: rgba(239, 231, 214, .7); min-height: 1.4em; margin-top: .55rem; }
 
-.hero-room { flex: 1 0 auto; min-height: clamp(210px, 34vh, 400px); }
+.hero-room { flex: 1 0 auto; min-height: clamp(270px, 40vh, 460px); }
 .hero-foot {
   display: flex; justify-content: flex-end; align-items: flex-end; gap: 1rem;
   padding-block: 0 1.1rem; font-size: .78rem; color: rgba(239, 231, 214, .78);
@@ -1055,7 +1055,7 @@ copyBtn.addEventListener("click", async () => {
     W = r.width; H = r.height; small = W < 700;
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
     const rr = roomEl.getBoundingClientRect();
-    horizon = Math.max(H * 0.42, rr.top - r.top + rr.height * 0.22);
+    horizon = Math.max(H * 0.42, rr.top - r.top + rr.height * 0.36);
     f = (H - horizon) * Z_NEAR / CAM_H;
     rtl = document.documentElement.dir === "rtl";
     /* box of the text block, in screen pixels, to soften stars behind it */
