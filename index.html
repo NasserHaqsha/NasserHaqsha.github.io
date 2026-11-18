@@ -17,23 +17,27 @@
 <meta name="twitter:title" content="Nasser Al-Haqshah | AI Engineer, Riyadh">
 <meta name="twitter:description" content="I build AI that shows its evidence: RAG, computer vision and LLM applications.">
 <meta name="twitter:image" content="https://nasserhaqsha.github.io/og.png">
-<meta name="theme-color" content="#16203A">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2316203A'/><g fill='%23F2D04B'><circle cx='16' cy='8' r='3.3'/><circle cx='48' cy='8' r='3.3'/><circle cx='16' cy='16' r='3.3'/><circle cx='24' cy='16' r='3.3'/><circle cx='48' cy='16' r='3.3'/><circle cx='16' cy='24' r='3.3'/><circle cx='32' cy='24' r='3.3'/><circle cx='48' cy='24' r='3.3'/><circle cx='16' cy='32' r='3.3'/><circle cx='32' cy='32' r='3.3'/><circle cx='48' cy='32' r='3.3'/><circle cx='16' cy='40' r='3.3'/><circle cx='40' cy='40' r='3.3'/><circle cx='48' cy='40' r='3.3'/><circle cx='16' cy='48' r='3.3'/><circle cx='48' cy='48' r='3.3'/><circle cx='16' cy='56' r='3.3'/><circle cx='48' cy='56' r='3.3'/></g></svg>">
+<meta name="theme-color" content="#0E1230">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230E1230'/><g fill='%23F4B26A'><circle cx='16' cy='8' r='3.3'/><circle cx='48' cy='8' r='3.3'/><circle cx='16' cy='16' r='3.3'/><circle cx='24' cy='16' r='3.3'/><circle cx='48' cy='16' r='3.3'/><circle cx='16' cy='24' r='3.3'/><circle cx='32' cy='24' r='3.3'/><circle cx='48' cy='24' r='3.3'/><circle cx='16' cy='32' r='3.3'/><circle cx='32' cy='32' r='3.3'/><circle cx='48' cy='32' r='3.3'/><circle cx='16' cy='40' r='3.3'/><circle cx='40' cy='40' r='3.3'/><circle cx='48' cy='40' r='3.3'/><circle cx='16' cy='48' r='3.3'/><circle cx='48' cy='48' r='3.3'/><circle cx='16' cy='56' r='3.3'/><circle cx='48' cy='56' r='3.3'/></g></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@200..800&family=Readex+Pro:wght@300..700&display=swap" rel="stylesheet">
 <style>
-/* Layout idea: an evidence ledger. Every claim sits next to its proof;
-   the hero is a live search over Nasser's own facts, the way his systems retrieve evidence. */
+/* Identity: Najd after dark. Night indigo sky, apricot and Dahna-red sand, a turquoise accent for anything you can press.
+   The hero is a live drawing: named Arabic stars over the Tuwaiq escarpment and its dunes, built from dots.
+   Scrolling down brings the dawn; the page ends in first light. */
 :root {
-  --paper: #EEF1EA;
-  --sheet: #F8F9F5;
-  --ink: #16203A;
-  --muted: #5A6373;
-  --rule: #CDD3C8;
-  --mark: #F2D04B;
-  --mark-ink: #16203A;
-  --signal: #2A7A66;
+  --deep: #0A0D24;
+  --night: #0E1230;
+  --panel: #161B42;
+  --ink: #EFE7D6;
+  --muted: #A9A6C0;
+  --rule: rgba(239, 231, 214, .14);
+  --sand: #F4B26A;
+  --dune: #D0583A;
+  --signal: #7ED6C8;
+  --mark: #F4B26A;
+  --mark-ink: #0E1230;
   --font-display: "Handjet", "Readex Pro", system-ui, sans-serif;
   --font-body: "Readex Pro", "Segoe UI", Tahoma, system-ui, -apple-system, sans-serif;
   --step--1: 0.84rem;
@@ -41,141 +45,158 @@
   --step-1: 1.25rem;
   --step-2: 1.6rem;
   --step-3: 2.4rem;
-  --step-4: clamp(3.4rem, 9vw, 6.4rem);
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #111824; --sheet: #172131; --ink: #E7EBE2; --muted: #9AA4B2;
-    --rule: #2B3647; --mark: #D8B93A; --mark-ink: #111824; --signal: #6CC3A8;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #111824; --sheet: #172131; --ink: #E7EBE2; --muted: #9AA4B2;
-  --rule: #2B3647; --mark: #D8B93A; --mark-ink: #111824; --signal: #6CC3A8;
   color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: var(--night); }
 body {
-  margin: 0; background: var(--paper); color: var(--ink);
-  font-family: var(--font-body); font-size: var(--step-0); line-height: 1.6; font-weight: 350;
+  margin: 0; background: var(--night); color: var(--ink);
+  font-family: var(--font-body); font-size: var(--step-0); line-height: 1.6; font-weight: 330;
 }
-html[lang="ar"] body { line-height: 1.75; }
+html[lang="ar"] body { line-height: 1.8; }
 a { color: var(--signal); text-underline-offset: 3px; }
 a:focus-visible, button:focus-visible, input:focus-visible {
-  outline: 2px solid var(--signal); outline-offset: 3px; border-radius: 3px;
+  outline: 2px solid var(--signal); outline-offset: 3px; border-radius: 4px;
 }
 h1, h2, h3 { text-wrap: balance; margin: 0; }
 p { margin: 0; }
 mark { background: var(--mark); color: var(--mark-ink); padding: 0 .15em; border-radius: 2px; }
-.wrap { width: min(1180px, 100% - 2rem); margin-inline: auto; }
+.wrap { width: min(1180px, 100% - 2.5rem); margin-inline: auto; }
 .num { font-family: var(--font-display); font-variant-numeric: tabular-nums; letter-spacing: .02em; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 bdi { unicode-bidi: isolate; }
 
-/* ---------- header ---------- */
-.top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.1rem; border-bottom: 1px solid var(--rule); }
-.top .who { font-weight: 600; text-decoration: none; color: var(--ink); }
+/* ---------- hero: Najd at night ---------- */
+.hero {
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: 100svh; display: flex; flex-direction: column;
+  background: var(--deep);
+}
+#najd { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: -1; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.15rem; }
+.top .who { font-weight: 500; text-decoration: none; color: var(--ink); }
 .top .right { display: flex; align-items: center; gap: 1.25rem; }
 .top nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
-.top nav a { color: var(--muted); text-decoration: none; font-size: var(--step--1); }
+.top nav a { color: rgba(239, 231, 214, .72); text-decoration: none; font-size: var(--step--1); }
 .top nav a:hover { color: var(--ink); }
 .lang {
   font: inherit; font-size: var(--step--1); cursor: pointer; color: var(--ink);
-  background: var(--sheet); border: 1px solid var(--rule); border-radius: 999px; padding: .25rem .8rem;
+  background: rgba(10, 13, 36, .55); border: 1px solid rgba(239, 231, 214, .3); border-radius: 999px; padding: .25rem .85rem;
 }
 .lang:hover { border-color: var(--signal); color: var(--signal); }
 
-/* ---------- hero ---------- */
-.hero {
-  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1.5rem, 4vw, 3.5rem);
-  padding-block: clamp(2rem, 5vw, 4rem) clamp(2.5rem, 5vw, 4rem); align-items: start;
+.hero-copy { padding-block: clamp(1.25rem, 5vh, 3.5rem) 0; pointer-events: none; }
+.hero-copy a, .hero-copy button { pointer-events: auto; }
+.hero-copy > * { max-width: 34rem; }
+.place { color: var(--sand); font-size: var(--step--1); }
+.name {
+  font-family: var(--font-display); font-weight: 700; font-size: clamp(3.4rem, 9vw, 6.6rem);
+  line-height: .86; letter-spacing: .01em; margin-top: .5rem;
+  text-shadow: 0 0 30px rgba(10, 13, 36, .9);
 }
-.name { font-family: var(--font-display); font-weight: 700; font-size: var(--step-4); line-height: .86; letter-spacing: .01em; }
 html[lang="ar"] .name { line-height: 1.05; }
 .name span { display: block; white-space: nowrap; }
-.name span + span { color: var(--signal); font-weight: 400; }
-.role { margin-top: 1.25rem; color: var(--muted); font-size: var(--step--1); }
-.thesis { margin-top: .6rem; font-size: var(--step-2); line-height: 1.3; font-weight: 500; max-width: 18ch; }
-html[lang="ar"] .thesis { max-width: 16ch; }
-.lede { margin-top: 1rem; max-width: 42ch; color: var(--muted); }
-.actions { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+.name span + span { color: var(--sand); font-weight: 400; }
+.role { margin-top: 1.1rem; color: rgba(239, 231, 214, .78); font-size: var(--step--1); }
+.thesis { margin-top: .45rem; font-size: var(--step-2); line-height: 1.3; font-weight: 450; max-width: 19ch; }
+.lede { margin-top: .9rem; max-width: 44ch; color: rgba(239, 231, 214, .8); text-shadow: 0 0 18px rgba(10, 13, 36, .95); }
+.actions { margin-top: 1.4rem; display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
 .btn {
   font: inherit; font-size: var(--step--1); font-weight: 500; cursor: pointer;
-  border: 1.5px solid var(--ink); background: var(--ink); color: var(--paper);
-  padding: .55rem 1rem; border-radius: 999px; text-decoration: none; display: inline-flex; gap: .4rem; align-items: center;
+  border: 1.5px solid var(--sand); background: var(--sand); color: var(--night);
+  padding: .55rem 1.05rem; border-radius: 999px; text-decoration: none; display: inline-flex; gap: .45rem; align-items: center;
 }
-.btn.ghost { background: transparent; color: var(--ink); }
-.btn:hover { transform: translateY(-1px); }
+.btn.ghost { background: rgba(10, 13, 36, .45); color: var(--ink); border-color: rgba(239, 231, 214, .35); }
+.btn.ghost:hover { border-color: var(--signal); color: var(--signal); }
 .btn svg { width: 1em; height: 1em; }
-.copy-status { font-size: var(--step--1); color: var(--muted); min-height: 1.4em; margin-top: .5rem; }
+.copy-status { font-size: var(--step--1); color: rgba(239, 231, 214, .7); min-height: 1.4em; margin-top: .55rem; }
 
-/* ask panel */
-.ask {
-  background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px;
-  padding: clamp(1rem, 2.5vw, 1.6rem); box-shadow: 0 1px 0 var(--rule), 0 18px 40px -28px rgba(22, 32, 58, .45);
+.hero-room { flex: 1 0 auto; min-height: clamp(210px, 34vh, 400px); }
+.hero-foot {
+  display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem;
+  padding-block: 0 1.1rem; font-size: .78rem; color: rgba(239, 231, 214, .78);
+  text-shadow: 0 0 12px rgba(10, 13, 36, 1);
 }
-.ask h2 { font-size: var(--step-1); font-weight: 600; }
-.ask .sub { color: var(--muted); font-size: var(--step--1); margin-top: .2rem; }
-.ask form { display: flex; gap: .5rem; margin-top: 1rem; }
+.hero-foot p { max-width: 52ch; }
+.hero-foot button {
+  font: inherit; font-size: .78rem; cursor: pointer; color: var(--ink); flex: none;
+  background: rgba(10, 13, 36, .6); border: 1px solid rgba(239, 231, 214, .3); border-radius: 6px; padding: .2rem .65rem;
+}
+.star-tip {
+  position: absolute; z-index: 2; pointer-events: none; opacity: 0; transform: translate(-50%, -150%);
+  transition: opacity .2s ease; white-space: nowrap;
+  font-size: .8rem; color: var(--deep); background: var(--ink); border-radius: 6px; padding: .15rem .55rem;
+}
+.star-tip.on { opacity: 1; }
+.star-tip small { color: #4B4766; margin-inline-start: .35rem; }
+
+/* ---------- ask my work ---------- */
+.ask-sec { border-top: 0; }
+.ask-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; }
+.ask-intro h2 { font-family: var(--font-display); font-size: var(--step-3); font-weight: 600; line-height: 1.05; }
+.ask-intro .sub { color: var(--muted); margin-top: .8rem; max-width: 40ch; }
+.how { margin-top: 1.1rem; padding-top: .9rem; border-top: 1px dashed var(--rule); font-size: .8rem; color: var(--muted); max-width: 46ch; }
+.ask {
+  background: var(--panel); border: 1px solid var(--rule); border-radius: 16px;
+  padding: clamp(1rem, 2.5vw, 1.6rem);
+}
+.ask form { display: flex; gap: .5rem; }
 .ask input {
-  flex: 1; min-width: 0; font: inherit; color: var(--ink); background: var(--paper);
+  flex: 1; min-width: 0; font: inherit; color: var(--ink); background: var(--deep);
   border: 1.5px solid var(--rule); border-radius: 10px; padding: .65rem .8rem;
 }
 .ask input:focus { border-color: var(--signal); outline: none; }
 .chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .75rem; }
 .chip {
   font: inherit; font-size: .8rem; cursor: pointer; color: var(--ink);
-  background: transparent; border: 1px dashed var(--muted); border-radius: 999px; padding: .25rem .7rem;
+  background: transparent; border: 1px dashed rgba(239, 231, 214, .35); border-radius: 999px; padding: .25rem .7rem;
 }
 .chip:hover, .chip[aria-pressed="true"] { border-style: solid; border-color: var(--signal); color: var(--signal); }
 .results { list-style: none; margin: 1.1rem 0 0; padding: 0; display: grid; gap: .9rem; }
 .hit { display: grid; grid-template-columns: 2.4rem 1fr; gap: .8rem; padding-top: .9rem; border-top: 1px solid var(--rule); }
 .hit:first-child { border-top: 0; padding-top: 0; }
-.rank { font-family: var(--font-display); font-size: 2rem; line-height: 1; color: var(--muted); font-weight: 300; }
+.rank { font-family: var(--font-display); font-size: 2rem; line-height: 1; color: var(--sand); font-weight: 300; }
 .hit p { font-size: .95rem; }
 .src { display: flex; align-items: center; gap: .6rem; margin-top: .45rem; font-size: .78rem; color: var(--muted); }
-.src b { font-weight: 600; color: var(--signal); }
+.src b { font-weight: 500; color: var(--signal); }
 .bar { flex: 1; height: 4px; background: var(--rule); border-radius: 4px; overflow: hidden; max-width: 140px; }
 .bar i { display: block; height: 100%; background: var(--signal); transform-origin: left; transition: transform .5s ease; }
 html[dir="rtl"] .bar i { transform-origin: right; }
 .score { font-family: var(--font-display); font-size: .95rem; }
 .empty { color: var(--muted); font-size: .95rem; }
-.how { margin-top: 1rem; padding-top: .8rem; border-top: 1px dashed var(--rule); font-size: .78rem; color: var(--muted); }
 
 /* ---------- sections ---------- */
-section { padding-block: clamp(2.5rem, 6vw, 4.5rem); border-top: 1px solid var(--rule); }
+section { padding-block: clamp(2.75rem, 6vw, 4.75rem); border-top: 1px solid var(--rule); }
+.hero { border-top: 0; padding: 0; }
 .sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
 .sec-head h2 { font-size: var(--step-3); font-family: var(--font-display); font-weight: 600; line-height: 1.05; }
 .sec-head p { color: var(--muted); max-width: 46ch; font-size: .95rem; }
 
 .case { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(1.25rem, 4vw, 3rem); padding-block: 2.2rem; border-top: 1px solid var(--rule); }
 .case:first-of-type { border-top: 0; padding-top: 0; }
-.glyph { font-family: var(--font-display); font-size: clamp(4.5rem, 12vw, 8.5rem); line-height: 1.15; font-weight: 600; padding-bottom: .15em; direction: rtl; text-align: left; }
+.glyph { font-family: var(--font-display); font-size: clamp(4.5rem, 12vw, 8.5rem); line-height: 1.15; font-weight: 600; padding-bottom: .15em; direction: rtl; text-align: left; color: var(--sand); }
 html[dir="rtl"] .glyph { text-align: right; }
 .glyph.latin { direction: ltr; font-size: clamp(3rem, 7vw, 4.6rem); font-weight: 500; }
-.case h3 { font-size: var(--step-1); font-weight: 600; margin-top: .6rem; }
+.case h3 { font-size: var(--step-1); font-weight: 500; margin-top: .6rem; }
 .meta { color: var(--muted); font-size: var(--step--1); margin-top: .35rem; }
 .tag-private { display: inline-block; margin-top: .6rem; font-size: .78rem; border: 1px solid var(--rule); border-radius: 6px; padding: .15rem .5rem; color: var(--muted); }
 .case ul { margin: 0; padding-inline-start: 1.1rem; display: grid; gap: .35rem; }
-.case li::marker { color: var(--signal); }
+.case li::marker { color: var(--sand); }
 .body-col { display: grid; gap: 1.4rem; align-content: start; }
 
-.scope { position: relative; border-radius: 12px; overflow: hidden; border: 1px solid var(--rule); background: var(--ink); margin: 0; }
+.scope { position: relative; border-radius: 12px; overflow: hidden; border: 1px solid var(--rule); background: var(--deep); margin: 0; }
 .scope canvas { display: block; width: 100%; height: clamp(220px, 32vw, 320px); }
-.scope figcaption { display: flex; justify-content: space-between; align-items: center; gap: .8rem; padding: .55rem .8rem; font-size: .78rem; color: var(--muted); background: var(--sheet); border-top: 1px solid var(--rule); }
+.scope figcaption { display: flex; justify-content: space-between; align-items: center; gap: .8rem; padding: .55rem .8rem; font-size: .78rem; color: var(--muted); background: var(--panel); border-top: 1px solid var(--rule); }
 .scope button { font: inherit; font-size: .78rem; cursor: pointer; background: none; border: 1px solid var(--rule); color: var(--ink); border-radius: 6px; padding: .15rem .55rem; }
 
 .metric { display: grid; gap: .5rem; }
-.metric h4 { margin: 0; font-size: .85rem; font-weight: 500; color: var(--muted); }
+.metric h4 { margin: 0; font-size: .85rem; font-weight: 400; color: var(--muted); }
 .mrow { display: grid; grid-template-columns: 11rem 1fr 3.5rem; gap: .75rem; align-items: center; font-size: .88rem; }
 .mtrack { height: 12px; background: repeating-linear-gradient(90deg, var(--rule) 0 1px, transparent 1px 10%); border-bottom: 1px solid var(--rule); position: relative; }
-.mfill { position: absolute; inset-block: 0; inset-inline-start: 0; background: var(--muted); border-start-end-radius: 3px; border-end-end-radius: 3px; }
+.mfill { position: absolute; inset-block: 0; inset-inline-start: 0; background: #5D5A80; border-start-end-radius: 3px; border-end-end-radius: 3px; }
 .mfill.hi { background: var(--signal); }
-.mfill.gain { opacity: .35; }
+.mfill.gain { opacity: .4; }
 .mval { font-family: var(--font-display); font-size: 1.15rem; text-align: end; }
 .axis { display: grid; grid-template-columns: 11rem 1fr 3.5rem; gap: .75rem; font-size: .72rem; color: var(--muted); }
 .axis .ticks { position: relative; display: block; height: 1.1em; }
@@ -184,70 +205,78 @@ html[dir="rtl"] .axis .ticks i { transform: translateX(50%); }
 .axis .ticks i:first-child { transform: none; }
 
 .flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); counter-reset: step; }
-.flow li { position: relative; padding-block: .9rem; padding-inline: 0 .9rem; border-top: 3px solid var(--ink); counter-increment: step; }
+.flow li { position: relative; padding-block: .9rem; padding-inline: 0 .9rem; border-top: 3px solid var(--sand); counter-increment: step; }
 .flow li + li { padding-inline-start: .9rem; border-inline-start: 1px dashed var(--rule); }
-.flow li::before { content: counter(step); font-family: var(--font-display); font-size: 1.6rem; line-height: 1; color: var(--signal); display: block; margin-bottom: .35rem; }
-.flow b { display: block; font-weight: 600; font-size: .92rem; }
+.flow li::before { content: counter(step); font-family: var(--font-display); font-size: 1.6rem; line-height: 1; color: var(--sand); display: block; margin-bottom: .35rem; }
+.flow b { display: block; font-weight: 500; font-size: .92rem; }
 .flow span { font-size: .82rem; color: var(--muted); display: block; margin-top: .2rem; }
 .verdicts { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; font-size: .82rem; color: var(--muted); }
-.verdict { border-radius: 999px; padding: .15rem .65rem; font-weight: 500; border: 1px solid; }
+.verdict { border-radius: 999px; padding: .15rem .65rem; font-weight: 450; border: 1px solid; }
 .v-ok { color: var(--signal); border-color: var(--signal); }
-.v-part { color: var(--ink); border-color: var(--mark); background: color-mix(in srgb, var(--mark) 35%, transparent); }
+.v-part { color: var(--ink); border-color: var(--sand); background: color-mix(in srgb, var(--sand) 22%, transparent); }
 .v-no { color: var(--muted); border-color: var(--muted); text-decoration: line-through; text-decoration-thickness: 1px; }
 .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
-.fact { border-inline-start: 2px solid var(--mark); padding-inline-start: .7rem; }
-.fact .num { font-size: 2.1rem; line-height: 1; display: block; }
+.fact { border-inline-start: 2px solid var(--dune); padding-inline-start: .7rem; }
+.fact .num { font-size: 2.1rem; line-height: 1; display: block; color: var(--sand); }
 .fact small { color: var(--muted); font-size: .78rem; line-height: 1.4; display: block; margin-top: .2rem; }
 
 .more { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--rule); margin-top: 1rem; }
 .more article { padding-block: 1.2rem; padding-inline: 0 1.2rem; border-bottom: 1px solid var(--rule); }
 .more article:not(:nth-child(3n+1)) { padding-inline-start: 1.2rem; border-inline-start: 1px solid var(--rule); }
-.more h3 { font-size: 1rem; font-weight: 600; }
+.more h3 { font-size: 1rem; font-weight: 500; }
 .more .meta { margin-top: .15rem; }
-.more p { margin-top: .5rem; font-size: .9rem; }
+.more p { margin-top: .5rem; font-size: .9rem; color: rgba(239, 231, 214, .86); }
 
 .matrix-wrap { overflow-x: auto; }
 table.matrix { border-collapse: collapse; width: 100%; min-width: 720px; font-size: .9rem; }
 .matrix th, .matrix td { padding: .7rem .5rem; border-bottom: 1px solid var(--rule); text-align: center; }
-.matrix thead th { font-weight: 500; color: var(--muted); font-size: .8rem; vertical-align: bottom; }
+.matrix thead th { font-weight: 400; color: var(--muted); font-size: .8rem; vertical-align: bottom; }
 .matrix th.skill-col { text-align: start; }
-.matrix tbody th { text-align: start; font-weight: 500; white-space: nowrap; }
+.matrix tbody th { text-align: start; font-weight: 450; white-space: nowrap; }
 .matrix tbody th button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-align: start; }
 .matrix tbody th button:hover { color: var(--signal); }
 .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: var(--ink); vertical-align: middle; }
 .matrix td.no .dot { background: transparent; border: 1px solid var(--rule); width: 6px; height: 6px; }
-.matrix tr.on th, .matrix tr.on td { background: color-mix(in srgb, var(--mark) 28%, transparent); }
-.matrix tr.on .dot { background: var(--signal); }
+.matrix tr.on th, .matrix tr.on td { background: color-mix(in srgb, var(--sand) 14%, transparent); }
+.matrix tr.on .dot { background: var(--sand); box-shadow: 0 0 10px var(--sand); }
 .matrix td.col-on { background: color-mix(in srgb, var(--signal) 9%, transparent); }
 .tools { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.5rem; padding: 0; list-style: none; }
-.tools li { border: 1px solid var(--rule); background: var(--sheet); border-radius: 6px; padding: .2rem .6rem; font-size: .85rem; }
+.tools li { border: 1px solid var(--rule); background: var(--panel); border-radius: 6px; padding: .2rem .6rem; font-size: .85rem; }
 
 .path { list-style: none; margin: 0; padding: 0; display: grid; }
 .path li { display: grid; grid-template-columns: 11rem 1.5rem minmax(0, 1fr); gap: 1rem; }
-.path .when { font-family: var(--font-display); font-size: 1.35rem; line-height: 1.3; text-align: end; padding-top: .1rem; }
+.path .when { font-family: var(--font-display); font-size: 1.35rem; line-height: 1.3; text-align: end; padding-top: .1rem; color: var(--sand); }
 .path .line { position: relative; }
 .path .line::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--rule); }
-.path .line::after { content: ""; position: absolute; left: 50%; top: .55rem; width: 11px; height: 11px; transform: translateX(-50%); border-radius: 50%; background: var(--paper); border: 2px solid var(--ink); }
-.path li.now .line::after { background: var(--mark); }
+.path .line::after { content: ""; position: absolute; left: 50%; top: .55rem; width: 11px; height: 11px; transform: translateX(-50%); border-radius: 50%; background: var(--night); border: 2px solid var(--ink); }
+.path li.now .line::after { background: var(--sand); border-color: var(--sand); box-shadow: 0 0 12px var(--sand); }
 .path .what { padding-bottom: 2rem; }
-.path h3 { font-size: 1.05rem; font-weight: 600; }
+.path h3 { font-size: 1.05rem; font-weight: 500; }
 .path .where { color: var(--muted); font-size: .9rem; }
 .path p { margin-top: .4rem; font-size: .93rem; max-width: 62ch; }
 
 .creds { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; margin-top: 1rem; }
-.creds h3 { font-size: 1rem; font-weight: 600; margin-bottom: .6rem; }
+.creds h3 { font-size: 1rem; font-weight: 500; margin-bottom: .6rem; }
 .creds ul { margin: 0; padding-inline-start: 1.1rem; display: grid; gap: .35rem; font-size: .93rem; }
+.creds li::marker { color: var(--sand); }
 
+/* the page ends in first light over the sand */
+#contact {
+  background:
+    radial-gradient(120% 90% at 50% 130%, rgba(244, 178, 106, .34), rgba(208, 88, 58, .16) 45%, transparent 75%),
+    var(--night);
+  padding-bottom: clamp(3.5rem, 9vw, 6.5rem);
+}
 .contact { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 2rem; align-items: end; }
 .contact h2 { font-family: var(--font-display); font-size: clamp(2.6rem, 7vw, 4.8rem); line-height: .98; font-weight: 600; }
 html[lang="ar"] .contact h2 { line-height: 1.2; }
 .contact dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: .45rem 1rem; font-size: .95rem; }
 .contact dt { color: var(--muted); }
 .contact dd { margin: 0; overflow-wrap: anywhere; }
-footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; border-top: 1px solid var(--rule); }
+footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; background: #1A1634; border-top: 1px solid var(--rule); }
 
 @media (max-width: 900px) {
-  .hero, .case, .contact { grid-template-columns: 1fr; }
+  .ask-grid, .case, .contact { grid-template-columns: 1fr; }
   .glyph { font-size: 5rem; }
   .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .flow li:nth-child(3) { padding-inline-start: 0; border-inline-start: 0; }
@@ -258,6 +287,8 @@ footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; bo
 }
 @media (max-width: 560px) {
   .top nav { display: none; }
+  .thesis { font-size: 1.35rem; }
+  .hero-foot { flex-direction: column; align-items: flex-start; }
   .more { grid-template-columns: 1fr; }
   .more article:nth-child(2n) { padding-inline-start: 0; border-inline-start: 0; }
   .mrow, .axis { grid-template-columns: 7.5rem 1fr 3rem; }
@@ -270,33 +301,34 @@ footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; bo
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .bar i { transition: none; }
-  .btn:hover { transform: none; }
+  .bar i, .star-tip { transition: none; }
 }
 </style>
 </head>
 <body>
 
-<header class="wrap top">
-  <a class="who" href="#top" data-ar="ناصر هقشه">Nasser Al-Haqshah</a>
-  <div class="right">
-    <nav aria-label="Sections">
-      <a href="#work" data-ar="الأعمال">Work</a>
-      <a href="#skills" data-ar="المهارات">Skills</a>
-      <a href="#path" data-ar="المسيرة">Path</a>
-      <a href="#contact" data-ar="تواصل">Contact</a>
-    </nav>
-    <button class="lang" type="button" id="lang-toggle" lang="ar">العربية</button>
-  </div>
-</header>
-
 <main id="top">
-  <div class="wrap hero">
-    <div>
-      <h1 class="name" data-ar="&lt;span&gt;ناصر&lt;/span&gt;&lt;span&gt;هقشه&lt;/span&gt;"><span>Nasser</span><span>Al-Haqshah</span></h1>
-      <p class="role" data-ar="مهندس ذكاء اصطناعي في الرياض. تطبيقات RAG والرؤية الحاسوبية والنماذج اللغوية الكبيرة.">AI engineer in Riyadh. RAG, computer vision and LLM applications.</p>
-      <p class="thesis" data-ar="أبني ذكاءً اصطناعياً &lt;mark&gt;يُبرز أدلته&lt;/mark&gt;.">I build AI that <mark>shows its evidence</mark>.</p>
-      <p class="lede" data-ar="كاشف درونات تخلو تقاريره من أي رقم مختلق. ومحرك امتثال يقتبس من السياسة قبل أن يحكم. وقبل الذكاء الاصطناعي، تابعت مؤشرات الأداء في أكثر من 20 مشروع تحول رقمي.">A drone detector whose reports contain no invented numbers. A compliance engine that quotes the policy before it rules. Before AI, I ran KPI reporting on 20+ digital transformation projects.</p>
+  <section class="hero" aria-labelledby="hero-name">
+    <canvas id="najd" aria-hidden="true"></canvas>
+    <header class="wrap top">
+      <a class="who" href="#top" data-ar="ناصر هقشه">Nasser Al-Haqshah</a>
+      <div class="right">
+        <nav aria-label="Sections">
+          <a href="#work" data-ar="الأعمال">Work</a>
+          <a href="#skills" data-ar="المهارات">Skills</a>
+          <a href="#path" data-ar="المسيرة">Path</a>
+          <a href="#contact" data-ar="تواصل">Contact</a>
+        </nav>
+        <button class="lang" type="button" id="lang-toggle" lang="ar">العربية</button>
+      </div>
+    </header>
+
+    <div class="wrap hero-copy">
+      <p class="place" data-ar="من الرياض، في قلب نجد">From Riyadh, in the heart of Najd</p>
+      <h1 class="name" id="hero-name" data-ar="&lt;span&gt;ناصر&lt;/span&gt;&lt;span&gt;هقشه&lt;/span&gt;"><span>Nasser</span><span>Al-Haqshah</span></h1>
+      <p class="role" data-ar="مهندس ذكاء اصطناعي. تطبيقات RAG والرؤية الحاسوبية والنماذج اللغوية الكبيرة.">AI engineer. RAG, computer vision and LLM applications.</p>
+      <p class="thesis" data-ar="أبني ذكاءً اصطناعياً يُبرز أدلته.">I build AI that shows its evidence.</p>
+      <p class="lede" data-ar="أنظمة تقتبس مصدرها قبل أن تحكم، ولا تختلق رقماً. وقبل الذكاء الاصطناعي، تابعت مؤشرات الأداء في أكثر من 20 مشروع تحول رقمي.">Systems that quote their source before they rule, and never invent a number. Before AI, I ran KPI reporting on 20+ digital transformation projects.</p>
       <div class="actions">
         <a class="btn" href="https://nasserhaqsha.github.io/cv.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1v9m0 0L4.5 6.5M8 10l3.5-3.5M2 13h12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-ar="السيرة الذاتية PDF">CV (PDF)</span></a>
         <button class="btn ghost" type="button" id="copy-email" data-email="nasserhqsha@gmail.com" data-ar="نسخ الإيميل">Copy email</button>
@@ -306,19 +338,33 @@ footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; bo
       <p class="copy-status" id="copy-status" aria-live="polite"><bdi>nasserhqsha@gmail.com</bdi></p>
     </div>
 
-    <div class="ask" aria-labelledby="ask-title">
-      <h2 id="ask-title" data-ar="اسأل أعمالي">Ask my work a question</h2>
-      <p class="sub" data-ar="الإجابات تأتي فقط من حقائق عن مشاريعي وأدواري، بالعربي أو الإنجليزي.">Answers come only from facts about my projects and roles.</p>
-      <form id="ask-form" role="search">
-        <label for="q" class="sr-only" data-ar="سؤالك">Your question</label>
-        <input id="q" name="q" type="search" autocomplete="off" value="How do you stop an AI from making things up?">
-        <button class="btn" type="submit" data-ar="ابحث">Search</button>
-      </form>
-      <div class="chips" id="chips"></div>
-      <ol class="results" id="results" aria-live="polite"></ol>
-      <p class="how" data-ar="هذا المربع يشغّل خوارزمية BM25 مع قائمة مرادفات صغيرة على &lt;span class=&quot;fc&quot;&gt;33&lt;/span&gt; حقيقة من سيرتي، داخل متصفحك. لا يولّد أي نص: كل إجابة جملة كتبتها أنا، مرتبة حسب صلتها بسؤالك.">This box runs BM25 with a small synonym list over <span class="fc">33</span> facts from my CV, in your browser. It generates nothing: every answer is a sentence I wrote, ranked by relevance.</p>
+    <div class="hero-room" aria-hidden="true"></div>
+    <div class="wrap hero-foot">
+      <p data-ar="ليل نجد، يُرسم الآن في متصفحك: حافة طويق وكثبانها تحت سهيل والثريا والجوزاء. مرّر المؤشر على نجمة لامعة لتعرف اسمها، وانزل لتشوف الفجر.">Najd after dark, drawn live in your browser: the Tuwaiq escarpment and its dunes under Suhail, Al-Thurayya and Al-Jawza. Point at a bright star to read its name, and scroll down for the dawn.</p>
+      <button type="button" id="sky-toggle">Pause</button>
     </div>
-  </div>
+    <div class="star-tip" id="star-tip" aria-hidden="true"></div>
+  </section>
+
+  <!-- ASK -->
+  <section class="ask-sec" id="ask">
+    <div class="wrap ask-grid">
+      <div class="ask-intro">
+        <h2 id="ask-title" data-ar="اسأل أعمالي">Ask my work a question</h2>
+        <p class="sub" data-ar="الإجابات تأتي فقط من حقائق عن مشاريعي وأدواري، بالعربي أو الإنجليزي.">Answers come only from facts about my projects and roles, in English or Arabic.</p>
+        <p class="how" data-ar="هذا المربع يشغّل خوارزمية BM25 مع قائمة مرادفات صغيرة على &lt;span class=&quot;fc&quot;&gt;33&lt;/span&gt; حقيقة من سيرتي، داخل متصفحك. لا يولّد أي نص: كل إجابة جملة كتبتها أنا، مرتبة حسب صلتها بسؤالك.">This box runs BM25 with a small synonym list over <span class="fc">33</span> facts from my CV, in your browser. It generates nothing: every answer is a sentence I wrote, ranked by relevance.</p>
+      </div>
+      <div class="ask" role="group" aria-labelledby="ask-title">
+        <form id="ask-form" role="search">
+          <label for="q" class="sr-only" data-ar="سؤالك">Your question</label>
+          <input id="q" name="q" type="search" autocomplete="off" value="How do you stop an AI from making things up?">
+          <button class="btn" type="submit" data-ar="ابحث">Search</button>
+        </form>
+        <div class="chips" id="chips"></div>
+        <ol class="results" id="results" aria-live="polite"></ol>
+      </div>
+    </div>
+  </section>
 
   <!-- WORK -->
   <section id="work">
@@ -531,7 +577,7 @@ footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; bo
 </main>
 
 <footer>
-  <div class="wrap" data-ar="ناصر هقشه، 2026. صفحة HTML واحدة بلا أي تتبع.">Nasser Al-Haqshah, 2026. Built as one HTML page with no tracking.</div>
+  <div class="wrap" data-ar="ناصر هقشه، 2026. صفحة HTML واحدة بلا أي تتبع. ليل نجد يُرسم مباشرة في متصفحك.">Nasser Al-Haqshah, 2026. One HTML page, no tracking. The night over Najd is drawn live in your browser.</div>
 </footer>
 
 <script>
@@ -760,6 +806,8 @@ const qEl = document.getElementById("q");
 const chipsEl = document.getElementById("chips");
 const toggleBtn = document.getElementById("lang-toggle");
 const scopeToggle = document.getElementById("scope-toggle");
+const skyToggle = document.getElementById("sky-toggle");
+let skyPlaying = true;
 
 function run(q) {
   const hits = bm25(q);
@@ -837,6 +885,8 @@ function setLang(l, opts = {}) {
   toggleBtn.lang = LANG === "ar" ? "en" : "ar";
   toggleBtn.setAttribute("aria-label", LANG === "ar" ? "Switch to English" : "التبديل إلى العربية");
   scopeToggle.textContent = scopePlaying ? UI[LANG].pause : UI[LANG].play;
+  skyToggle.textContent = skyPlaying ? UI[LANG].pause : UI[LANG].play;
+  if (window.redrawSky) window.redrawSky();
   if (!opts.keepQuery) qEl.value = UI[LANG].q0;
   renderChips(); renderMatrix(); run(qEl.value);
   try { localStorage.setItem("lang", LANG); } catch (e) {}
@@ -882,7 +932,7 @@ copyBtn.addEventListener("click", async () => {
     const t = (scopePlaying ? now - t0 : tPaused) / 1000;
     const signal = css("--signal"), mark = css("--mark");
     const dark = getComputedStyle(document.documentElement).colorScheme === "dark";
-    const sky = dark ? "#0B111B" : css("--ink");
+    const sky = css("--deep");
     ctx.fillStyle = sky; ctx.fillRect(0, 0, W, H);
     ctx.strokeStyle = "rgba(255,255,255,.08)"; ctx.lineWidth = 1;
     for (let r = 1; r <= 6; r++) { ctx.beginPath(); ctx.arc(W * .06, H * 1.02, r * W * .17, Math.PI * 1.5, Math.PI * 2); ctx.stroke(); }
@@ -930,6 +980,326 @@ copyBtn.addEventListener("click", async () => {
     new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible && scopePlaying) start(); }, { threshold: 0 }).observe(cv);
   }
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (!scopePlaying) frame(performance.now()); });
+})();
+
+/* ---------------- Najd at night: named stars over the Tuwaiq escarpment, drawn in dots ---------------- */
+(function () {
+  const hero = document.querySelector(".hero");
+  const cv = document.getElementById("najd");
+  const ctx = cv.getContext("2d");
+  const copyEl = document.querySelector(".hero-copy");
+  const roomEl = document.querySelector(".hero-room");
+  const tip = document.getElementById("star-tip");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  skyPlaying = !reduce;
+
+  let W = 0, H = 0, dpr = 1, horizon = 0, f = 1, small = false, rtl = false;
+  let visible = true, raf = 0, last = performance.now(), T = 0, zoff = 0;
+  let mx = 0, mxs = 0, dawn = 0, dawnS = 0, copyBox = { l: 0, t: 0, r: 0, b: 0 };
+  let faint = [], bright = [], named = [], shoots = [], nextShoot = 6, lite = false, slow = false, tick = 0, cost = 0, costN = 0;
+  const layer = document.createElement("canvas");
+  const lctx = layer.getContext("2d");
+
+  /* small deterministic helpers */
+  let seed = 11;
+  const rnd = () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+  const gauss = () => (rnd() + rnd() + rnd() - 1.5) / 1.5;
+  const hash = (i, j) => { let h = (i * 374761393 + j * 668265263) | 0; h = Math.imul(h ^ (h >>> 13), 1274126177); return ((h ^ (h >>> 16)) >>> 0) / 4294967295; };
+  const sm = x => x * x * (3 - 2 * x);
+  function noise(x, y) {
+    const xi = Math.floor(x), yi = Math.floor(y), u = sm(x - xi), v = sm(y - yi);
+    const a = hash(xi, yi), b = hash(xi + 1, yi), c = hash(xi, yi + 1), d = hash(xi + 1, yi + 1);
+    return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+  }
+  const sstep = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+  const mix = (a, b, t) => a + (b - a) * t;
+  const hex = h => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
+  const mixc = (A, B, t) => [mix(A[0], B[0], t), mix(A[1], B[1], t), mix(A[2], B[2], t)];
+  const rgb = (c, a = 1) => `rgba(${c[0] | 0},${c[1] | 0},${c[2] | 0},${a})`;
+
+  const C = {
+    skyTop: hex("#070A22"), skyTopDawn: hex("#24306E"),
+    skyMid: hex("#121540"), skyMidDawn: hex("#6A4F8E"),
+    skyLow: hex("#2C2560"), skyLowDawn: hex("#F4A259"),
+    nearFill: hex("#2A1D3D"), farFill: hex("#2A2457"),
+    nearFillDawn: hex("#3F2638"), farFillDawn: hex("#8A5A72"), night: hex("#0E1230"),
+    dune: hex("#D0583A"), sand: hex("#F4B26A"), light: hex("#FFE6C2")
+  };
+
+  /* terrain: a two-tier limestone escarpment (plateau to the right) above a plain of long dunes */
+  const PLATEAU = 2.35, CAM_H = 2.05, Z_NEAR = 1.0, Z_FAR = 46;
+  const edge = Z => 0.6 + 2.2 * Math.sin(Z * 0.055) + 0.9 * Math.sin(Z * 0.17 + 1.3) + 0.35 * Math.sin(Z * 0.41 + 0.2);
+  function height(x, Z) {
+    const e = edge(Z) + (noise(Z * 0.35, 3.1) - 0.5) * 0.5;
+    const cap = sstep(e - 0.2, e + 0.8, x);
+    const ledge = sstep(e - 1.6, e - 0.35, x);
+    let h = PLATEAU * (0.6 * cap + 0.4 * ledge);
+    h += cap * (noise(x * 0.55, Z * 0.55) - 0.5) * 0.45;
+    h -= cap * sstep(0.62, 0.9, noise(x * 0.12 + 7, Z * 0.09)) * 1.1;      /* wadis cut into the plateau */
+    const plain = 1 - ledge;
+    const ridge = 0.5 + 0.5 * Math.sin(x * 1.15 + Math.sin(Z * 0.21) * 1.7 + noise(x * 0.25, Z * 0.12) * 3.0);
+    h += plain * (ridge * ridge * 0.46 + (noise(x * 1.6, Z * 1.6) - 0.5) * 0.1);
+    return h;
+  }
+
+  /* stars with names a Najdi grandfather would know (positions are artistic, not astronomical) */
+  const NAMED = [
+    { id: "thurayya", x: .80, y: .15, en: "Al-Thurayya", enS: "the Pleiades", ar: "الثريا", arS: "عنقود الثريا",
+      pts: [[0, 0, 1.7], [9, -5, 1.5], [16, 2, 1.6], [6, 8, 1.3], [-6, 6, 1.2], [12, 11, 1.2], [3, -10, 1.1]] },
+    { id: "jawza", x: .655, y: .36, en: "Al-Jawza", enS: "Orion", ar: "الجوزاء", arS: "منطقة الجوزاء",
+      pts: [[-24, 0, 1.9], [0, -7, 2.0], [24, -14, 1.9], [-30, -78, 2.6, "#FFB58A"], [40, 52, 2.5, "#CFE0FF"], [52, -70, 1.7], [-38, 44, 1.6]] },
+    { id: "suhail", x: .585, y: .86, en: "Suhail", enS: "Canopus", ar: "سهيل", arS: "إذا طلع برد الليل",
+      pts: [[0, 0, 3.2, "#FFE9BF"]] }
+  ];
+
+  function size() {
+    const r = hero.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = r.width; H = r.height; small = W < 700;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    const rr = roomEl.getBoundingClientRect();
+    horizon = Math.max(H * 0.42, rr.top - r.top + rr.height * 0.22);
+    f = (H - horizon) * Z_NEAR / CAM_H;
+    rtl = document.documentElement.dir === "rtl";
+    /* box of the text block, in screen pixels, to soften stars behind it */
+    let l = Infinity, t = Infinity, rgt = -Infinity, b = -Infinity;
+    [...copyEl.children].forEach(el => { const q = el.getBoundingClientRect(); if (!q.width) return; l = Math.min(l, q.left); t = Math.min(t, q.top); rgt = Math.max(rgt, q.right); b = Math.max(b, q.bottom); });
+    copyBox = { l: l - r.left - 30, t: t - r.top - 20, r: rgt - r.left + 30, b: b - r.top + 20 };
+    buildStars();
+  }
+
+  const sceneX = x => (rtl ? W - x : x);
+  const dimAt = (x, y) => { const sx = sceneX(x); return (sx > copyBox.l && sx < copyBox.r && y > copyBox.t && y < copyBox.b) ? 0.28 : 1; };
+
+  function buildStars() {
+    seed = 11;
+    layer.width = cv.width; layer.height = cv.height;
+    lctx.setTransform(dpr, 0, 0, dpr, 0, 0); lctx.clearRect(0, 0, W, H);
+    const area = W * horizon;
+    /* the Milky Way: a faint band of dust and tiny stars */
+    const ax = W * 0.04, ay = -H * 0.02, bx = W * 0.72, by = horizon * 1.02;
+    const len = Math.hypot(bx - ax, by - ay), nx = -(by - ay) / len, ny = (bx - ax) / len;
+    for (let k = 0; k < 26; k++) {
+      const u = k / 25, px = mix(ax, bx, u), py = mix(ay, by, u), rad = W * (0.06 + 0.03 * Math.sin(u * 7));
+      const g = lctx.createRadialGradient(px, py, 0, px, py, rad);
+      g.addColorStop(0, "rgba(140,125,210,0.07)"); g.addColorStop(1, "rgba(140,125,210,0)");
+      lctx.fillStyle = g; lctx.beginPath(); lctx.arc(px, py, rad, 0, Math.PI * 2); lctx.fill();
+    }
+    const nBand = Math.round(area / (small ? 260 : 150));
+    for (let k = 0; k < nBand; k++) {
+      const u = rnd(), spread = W * (0.05 + 0.03 * Math.sin(u * 9)), o = gauss() * spread;
+      const x = mix(ax, bx, u) + nx * o, y = mix(ay, by, u) + ny * o;
+      if (y > horizon) continue;
+      lctx.fillStyle = `rgba(230,225,255,${(0.08 + rnd() * 0.32) * dimAt(x, y)})`;
+      const s = 0.5 + rnd() * 0.7; lctx.fillRect(x, y, s, s);
+    }
+    /* scattered faint stars */
+    const nFaint = Math.round(area / (small ? 700 : 420));
+    for (let k = 0; k < nFaint; k++) {
+      const x = rnd() * W, y = Math.pow(rnd(), 1.15) * horizon;
+      const warm = rnd() < 0.3;
+      lctx.fillStyle = warm ? `rgba(255,226,190,${(0.25 + rnd() * 0.45) * dimAt(x, y)})` : `rgba(225,232,255,${(0.2 + rnd() * 0.45) * dimAt(x, y)})`;
+      const s = 0.6 + rnd() * 0.8; lctx.fillRect(x, y, s, s);
+    }
+    /* brighter stars that twinkle */
+    bright = [];
+    const nBright = small ? 40 : 85;
+    for (let k = 0; k < nBright; k++) {
+      const x = rnd() * W, y = Math.pow(rnd(), 1.3) * horizon * 0.96;
+      bright.push({ x, y, s: 1 + rnd() * 1.3, a: (0.55 + rnd() * 0.45) * dimAt(x, y), ph: rnd() * 6.28, sp: 0.6 + rnd() * 1.8, warm: rnd() < 0.35 });
+    }
+    /* named stars */
+    const k = Math.min(1, W / 1200) * (small ? 0.8 : 1);
+    named = NAMED.filter(n => !(small && n.id === "jawza")).map(n => ({ ...n, cx: n.x * W, cy: n.y * horizon,
+      dots: n.pts.map(p => ({ x: n.x * W + p[0] * k, y: n.y * horizon + p[1] * k, s: p[2] * (small ? 0.85 : 1), col: p[3] || "#FFF4DC", ph: rnd() * 6.28 })) }));
+  }
+
+  function drawSky(t) {
+    const top = mixc(C.skyTop, C.skyTopDawn, dawnS), midc = mixc(C.skyMid, C.skyMidDawn, dawnS), low = mixc(C.skyLow, C.skyLowDawn, dawnS);
+    const g = ctx.createLinearGradient(0, 0, 0, horizon);
+    g.addColorStop(0, rgb(top)); g.addColorStop(0.62, rgb(midc)); g.addColorStop(1, rgb(low));
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, horizon + 2);
+    ctx.fillStyle = rgb(low); ctx.fillRect(0, horizon, W, H - horizon);
+    /* a warm glow on the horizon: city light at night, the sun at dawn */
+    const gx = W * 0.62, glow = ctx.createRadialGradient(gx, horizon, 0, gx, horizon, W * 0.55);
+    glow.addColorStop(0, `rgba(244,162,89,${0.10 + 0.45 * dawnS})`); glow.addColorStop(1, "rgba(244,162,89,0)");
+    ctx.fillStyle = glow; ctx.fillRect(0, 0, W, horizon + 4);
+
+    const starA = 1 - dawnS * 0.9;
+    ctx.globalAlpha = starA; ctx.drawImage(layer, 0, 0, W, H); ctx.globalAlpha = 1;
+    bright.forEach(s => {
+      const a = s.a * (0.62 + 0.38 * Math.sin(t * s.sp + s.ph)) * starA;
+      ctx.fillStyle = s.warm ? `rgba(255,228,196,${a})` : `rgba(236,240,255,${a})`;
+      ctx.fillRect(s.x - s.s / 2, s.y - s.s / 2, s.s, s.s);
+    });
+    named.forEach(n => n.dots.forEach(d => {
+      const a = (0.85 + 0.15 * Math.sin(t * 1.3 + d.ph)) * starA, r = d.s * (n.hot ? 1.35 : 1);
+      if (!lite) {
+        const gl = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, r * 5);
+        gl.addColorStop(0, `rgba(255,236,205,${0.35 * a})`); gl.addColorStop(1, "rgba(255,236,205,0)");
+        ctx.fillStyle = gl; ctx.beginPath(); ctx.arc(d.x, d.y, r * 5, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.globalAlpha = a; ctx.fillStyle = d.col; ctx.beginPath(); ctx.arc(d.x, d.y, r, 0, Math.PI * 2); ctx.fill(); ctx.globalAlpha = 1;
+    }));
+    /* shooting stars */
+    shoots = shoots.filter(s => s.life < 1);
+    shoots.forEach(s => {
+      const p = s.life, x = s.x + s.dx * p, y = s.y + s.dy * p;
+      const g2 = ctx.createLinearGradient(x, y, x - s.dx * 0.25, y - s.dy * 0.25);
+      g2.addColorStop(0, `rgba(255,244,220,${(1 - p) * starA})`); g2.addColorStop(1, "rgba(255,244,220,0)");
+      ctx.strokeStyle = g2; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x - s.dx * 0.25, y - s.dy * 0.25); ctx.stroke();
+    });
+  }
+
+  function drawLand() {
+    const camX = edge(zoff + 2) - 4.8 + mxs * 1.3;
+    const dz = (small ? 0.8 : 0.55) * (lite ? 1.6 : 1), cols = Math.round((small ? 70 : 110) * (lite ? 0.6 : 1));
+    const frac = zoff % dz, base = Math.floor(zoff / dz);
+    const n = Math.ceil((Z_FAR - Z_NEAR) / dz) + 1;
+    const lowC = rgb(mixc(C.dune, C.light, dawnS * 0.3)), highC = rgb(mixc(C.sand, C.light, 0.25 + dawnS * 0.3));
+    const hc = mixc(C.skyLow, C.skyLowDawn, dawnS);
+    let hazed = false;
+    ctx.lineCap = "round";
+    for (let i = n; i >= 0; i--) {
+      const z = Z_NEAR + i * dz - frac;
+      if (z < 0.42) continue;
+      const Zw = Z_NEAR + (i + base) * dz;
+      const d = Math.min(1, (z - Z_NEAR) / (Z_FAR - Z_NEAR));
+      if (!hazed && d < 0.42) {
+        /* haze over the distant land only */
+        hazed = true;
+        const hz = ctx.createLinearGradient(0, horizon - 40, 0, horizon + 60);
+        hz.addColorStop(0, rgb(hc, 0)); hz.addColorStop(0.45, rgb(hc, 0.45)); hz.addColorStop(1, rgb(hc, 0));
+        ctx.fillStyle = hz; ctx.fillRect(0, horizon - 40, W, 100);
+      }
+      const half = (W / 2) * z / f * 1.12;
+      let step = 2 * half / cols; step = Math.pow(2, Math.round(Math.log2(step)));
+      const x0 = Math.floor((camX - half) / step) * step, x1 = camX + half + step;
+      const crest = new Path2D();
+      let first = true, sx0 = 0, sxl = 0;
+      for (let x = x0; x <= x1; x += step) {
+        const px = W / 2 + (x - camX) * f / z, py = horizon + (CAM_H - height(x, Zw)) * f / z;
+        if (first) { crest.moveTo(px, py); sx0 = px; first = false; } else crest.lineTo(px, py);
+        sxl = px;
+      }
+      /* body of this ridge row, hiding what lies behind it */
+      const k = Math.pow(d, 0.7);
+      const fill = mixc(mixc(C.nearFill, C.farFill, k), mixc(C.nearFillDawn, C.farFillDawn, k), dawnS * 0.8);
+      /* fill only down to the lowest point the next nearer row can reach: no overdraw */
+      const zn = z - dz, yb = zn < 0.42 ? H + 2 : Math.min(H + 2, horizon + (CAM_H + 0.12) * f / zn + 1);
+      const body = new Path2D(crest); body.lineTo(sxl, yb); body.lineTo(sx0, yb); body.closePath();
+      ctx.fillStyle = rgb(fill); ctx.fill(body);
+      /* evenly spaced dots along the crest; colour follows height: red sand low, pale limestone high */
+      const yLow = horizon + CAM_H * f / z, yHigh = horizon + (CAM_H - PLATEAU) * f / z;
+      const g = ctx.createLinearGradient(0, yLow, 0, yHigh);
+      g.addColorStop(0, lowC); g.addColorStop(1, highC);
+      const dot = Math.max(0.9, 2.8 * Math.pow(1 - d, 1.5)) * (small ? 0.9 : 1);
+      const gap = Math.max(3.2, 10 * Math.pow(1 - d, 1.4));
+      ctx.setLineDash([0.01, gap]); ctx.lineDashOffset = -((sx0 % gap) + gap) % gap;
+      ctx.lineWidth = dot; ctx.strokeStyle = g;
+      ctx.globalAlpha = Math.min(1, 0.12 + 0.95 * Math.pow(1 - d, 0.7)) * (0.8 + 0.2 * dawnS);
+      ctx.stroke(crest);
+      ctx.globalAlpha = 1;
+    }
+    ctx.setLineDash([]);
+  }
+
+  function fadeOut() {
+    /* melt the bottom of the scene into the page below */
+    const fg = ctx.createLinearGradient(0, H - 170, 0, H);
+    fg.addColorStop(0, rgb(C.night, 0)); fg.addColorStop(0.55, rgb(C.night, 0.55)); fg.addColorStop(1, rgb(C.night, 1));
+    ctx.fillStyle = fg; ctx.fillRect(0, H - 170, W, 170);
+  }
+
+  function draw() {
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (rtl) { ctx.translate(W, 0); ctx.scale(-1, 1); }
+    drawSky(T);
+    drawLand();
+    fadeOut();
+  }
+
+  function frame(now) {
+    const dt = Math.min(0.05, (now - last) / 1000); last = now;
+    if (skyPlaying) {
+      T += dt; zoff += dt * 0.85;
+      shoots.forEach(s => { s.life += dt / s.dur; });
+      nextShoot -= dt;
+      if (nextShoot < 0) { shoot(); nextShoot = 7 + Math.random() * 9; }
+    }
+    mxs += (mx - mxs) * 0.035;
+    dawnS += (dawn - dawnS) * 0.12;
+    const c0 = performance.now();
+    if (!(slow && (++tick & 1))) draw();
+    cost += performance.now() - c0;
+    if (++costN === 40) { const avg = cost / costN; if (avg > 18) { if (lite) slow = true; lite = true; } cost = 0; costN = 0; }
+    if (skyPlaying && visible) raf = requestAnimationFrame(frame);
+  }
+  function start() { cancelAnimationFrame(raf); last = performance.now(); raf = requestAnimationFrame(frame); }
+  let pending = false;
+  function redraw() { if (pending) return; pending = true; requestAnimationFrame(() => { pending = false; mxs = mx; dawnS = dawn; draw(); }); }
+
+  function shoot(x, y) {
+    const sx = x ?? W * (0.35 + Math.random() * 0.6), sy = y ?? horizon * (0.05 + Math.random() * 0.35);
+    const dir = Math.random() < 0.5 ? -1 : 1;
+    shoots.push({ x: sx, y: sy, dx: dir * (130 + Math.random() * 120), dy: 70 + Math.random() * 60, life: 0, dur: 0.9 + Math.random() * 0.5 });
+  }
+
+  /* pointer: drift the view, name the bright stars, a click in the sky throws a shooting star */
+  function local(e) { const r = hero.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
+  function hitStar(x, y) {
+    const sx = sceneX(x); let best = null, bd = small ? 34 : 26;
+    named.forEach(n => n.dots.forEach(d => { const dd = Math.hypot(d.x - sx, d.y - y); if (dd < bd) { bd = dd; best = n; } }));
+    return best;
+  }
+  function showTip(n, x, y) {
+    named.forEach(m => { m.hot = m === n; });
+    if (!n) { tip.classList.remove("on"); return; }
+    const ar = LANG === "ar";
+    tip.innerHTML = `${ar ? n.ar : n.en}<small>${ar ? n.arS : n.enS}</small>`;
+    const ax = rtl ? W - n.dots[0].x : n.dots[0].x;
+    tip.style.left = Math.min(W - 90, Math.max(90, ax)) + "px"; tip.style.top = n.dots[0].y - 8 + "px";
+    tip.classList.add("on");
+  }
+  hero.addEventListener("pointermove", e => {
+    const [x, y] = local(e);
+    mx = (sceneX(x) / W - 0.5) * 2;
+    if (y < horizon + 10) showTip(hitStar(x, y), x, y); else showTip(null);
+    if (!skyPlaying) redraw();
+  });
+  hero.addEventListener("pointerleave", () => { mx = 0; showTip(null); if (!skyPlaying) redraw(); });
+  hero.addEventListener("pointerdown", e => {
+    if (e.target.closest("a, button, input")) return;
+    const [x, y] = local(e);
+    if (y > horizon) return;
+    const n = hitStar(x, y);
+    if (n) { showTip(n, x, y); if (!skyPlaying) redraw(); return; }
+    if (skyPlaying) shoot(sceneX(x), y);
+  });
+
+  /* scrolling brings the dawn */
+  function onScroll() {
+    dawn = Math.min(1, Math.max(0, window.scrollY / (hero.offsetHeight * 0.75)));
+    if (!skyPlaying) redraw();
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  skyToggle.addEventListener("click", () => {
+    skyPlaying = !skyPlaying;
+    skyToggle.textContent = skyPlaying ? UI[LANG].pause : UI[LANG].play;
+    if (skyPlaying) start();
+  });
+
+  function relayout() { size(); redraw(); if (skyPlaying && visible) start(); }
+  window.addEventListener("resize", relayout);
+  window.redrawSky = relayout;
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible && skyPlaying) start(); }, { threshold: 0 }).observe(hero);
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
+
+  size(); onScroll(); dawnS = dawn; draw();
+  if (skyPlaying) start();
 })();
 
 /* ---------------- start ---------------- */
