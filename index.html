@@ -349,7 +349,7 @@ footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; ba
       <div class="ask-intro">
         <h2 id="ask-title" data-ar="اسأل أعمالي">Ask my work a question</h2>
         <p class="sub" data-ar="الإجابات تأتي فقط من حقائق عن مشاريعي وأدواري، بالعربي أو الإنجليزي.">Answers come only from facts about my projects and roles, in English or Arabic.</p>
-        <p class="how" data-ar="هذا المربع يشغّل خوارزمية BM25 مع قائمة مرادفات صغيرة على &lt;span class=&quot;fc&quot;&gt;33&lt;/span&gt; حقيقة من سيرتي، داخل متصفحك. لا يولّد أي نص: كل إجابة جملة كتبتها أنا، مرتبة حسب صلتها بسؤالك.">This box runs BM25 with a small synonym list over <span class="fc">33</span> facts from my CV, in your browser. It generates nothing: every answer is a sentence I wrote, ranked by relevance.</p>
+        <p class="how" data-ar="هذا المربع يشغّل خوارزمية BM25 مع قائمة مرادفات صغيرة على &lt;span class=&quot;fc&quot;&gt;30&lt;/span&gt; حقيقة من سيرتي، داخل متصفحك. لا يولّد أي نص: كل إجابة جملة كتبتها أنا، مرتبة حسب صلتها بسؤالك.">This box runs BM25 with a small synonym list over <span class="fc">30</span> facts from my CV, in your browser. It generates nothing: every answer is a sentence I wrote, ranked by relevance.</p>
       </div>
       <div class="ask" role="group" aria-labelledby="ask-title">
         <form id="ask-form" role="search">
@@ -368,7 +368,7 @@ footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; ba
     <div class="wrap">
       <div class="sec-head">
         <h2 data-ar="الأعمال">Work</h2>
-        <p data-ar="ثلاثة مشاريع بالتفصيل، ثم البقية. الأرقام من تقييم كل مشروع نفسه.">Three projects in depth, then the rest. Figures come from each project's own evaluation.</p>
+        <p data-ar="مشروعان بالتفصيل، ثم البقية. الأرقام من تقييم كل مشروع نفسه.">Two projects in depth, then the rest. Figures come from each project's own evaluation.</p>
       </div>
 
       <article class="case" id="mirqab">
@@ -423,23 +423,6 @@ footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; ba
         </div>
       </article>
 
-      <article class="case" id="search">
-        <div>
-          <div class="glyph latin">nDCG@10</div>
-          <h3 data-ar="محرك بحث دلالي لأسئلة الأحياء">Semantic search engine for biology Q&amp;A</h3>
-          <p class="meta" data-ar="مسابقة أكاديمية علو على Kaggle، أكتوبر 2026">Olo Academy Kaggle competition, Oct 2026</p>
-        </div>
-        <div class="body-col">
-          <p data-ar="مرحلة الاسترجاع في نظام RAG: لكل سؤال، إيجاد أنسب 10 مقاطع من بين 49,457 مقطعاً في الأحياء حسب المعنى لا الكلمات. برمجت BM25 ومقياس nDCG@10 من الصفر كنقطة مقارنة، ثم انتقلت إلى البحث الدلالي بـ Qwen3-Embedding-0.6B على معالج T4.">The retrieval step of a RAG system: for each question, find the 10 most relevant of 49,457 biology passages by meaning, not keywords. I wrote BM25 and the nDCG@10 metric from scratch as the baseline, then moved to dense search with Qwen3-Embedding-0.6B on a T4 GPU.</p>
-          <div class="metric" role="group" aria-label="Improvement over the BM25 baseline">
-            <h4 data-ar="مقارنةً بنقطة المقارنة BM25 (الأساس = 1.00)">Relative to my BM25 baseline (baseline = 1.00)</h4>
-            <div class="mrow"><span data-ar="جودة الترتيب nDCG@10">Ranking quality, nDCG@10</span><div class="mtrack"><div class="mfill hi gain" style="width:94.4%"></div><div class="mfill" style="width:62.5%"></div></div><span class="mval">1.51</span></div>
-            <div class="mrow"><span data-ar="الاستدعاء">Recall</span><div class="mtrack"><div class="mfill hi gain" style="width:93.1%"></div><div class="mfill" style="width:62.5%"></div></div><span class="mval">1.49</span></div>
-            <div class="axis"><span></span><span class="ticks"><i style="inset-inline-start:0">0</i><i style="inset-inline-start:62.5%">1.00</i><i style="inset-inline-start:93.75%">1.50</i></span><span></span></div>
-          </div>
-          <p class="meta" data-ar="الجزء الداكن: نقطة المقارنة BM25. الامتداد الفاتح: مكسب البحث الدلالي (+51% و+49%).">Dark segment: the BM25 baseline. Light extension: the gain from semantic search (+51% and +49%).</p>
-        </div>
-      </article>
 
       <div class="more" aria-label="More work">
         <article>
@@ -592,9 +575,6 @@ const FACTS = [
   ["Deraa", "A fine-tuned AraBERT classifier routes Arabic policy passages to 22 subdomains, benchmarked against a TF-IDF baseline.", "درع", "نموذج AraBERT مضبوط يوجّه مقاطع السياسات العربية إلى 22 مجالاً فرعياً، مقارنةً بنموذج TF-IDF أساسي."],
   ["Deraa", "A local LLM judge returns structured JSON behind an evidence guard that blocks hallucinations by checking every quote exists word for word; scores are computed in code, not by the LLM.", "درع", "نموذج لغوي محلي يصدر أحكامه بصيغة JSON منظمة، وخلفه حارس أدلة يمنع الهلوسة بالتحقق من وجود كل اقتباس حرفياً، ودرجات الامتثال تُحسب بالكود لا بالنموذج."],
   ["Deraa", "Runs fully offline on local models, chosen over a cloud API for reliability and data privacy.", "درع", "يعمل بالكامل دون اتصال على نماذج محلية، لموثوقية أعلى وحماية خصوصية البيانات."],
-  ["Semantic search", "Built the retrieval step of a RAG system that finds the 10 most relevant of 49,457 biology passages for each question.", "البحث الدلالي", "بنيت مرحلة الاسترجاع في نظام RAG تجد أنسب 10 مقاطع من بين 49,457 مقطعاً في الأحياء لكل سؤال."],
-  ["Semantic search", "Implemented BM25 and the nDCG@10 metric from scratch as a baseline.", "البحث الدلالي", "برمجت BM25 ومقياس nDCG@10 من الصفر كنقطة مقارنة."],
-  ["Semantic search", "Moved to dense semantic search with Qwen3-Embedding-0.6B embeddings on a T4 GPU, improving ranking quality (nDCG@10) by 51% and recall by 49%.", "البحث الدلالي", "انتقلت إلى البحث الدلالي بتضمينات Qwen3-Embedding-0.6B على معالج T4، فتحسنت جودة الترتيب (nDCG@10) بنسبة 51% والاستدعاء بنسبة 49%."],
   ["Trip agent", "Built a LangGraph agent that estimates trip costs, running a local Qwen2.5-1.5B-Instruct LLM on a Colab T4 GPU.", "وكيل الرحلات", "بنيت وكيلاً بـ LangGraph يقدّر تكاليف الرحلات، يعمل على نموذج لغوي محلي Qwen2.5-1.5B-Instruct عبر Colab T4."],
   ["AutoGate", "KSU graduation project: a touch-free parking gate that reads license plates in real time with computer vision, logs entries in MySQL and shows them on a PHP web dashboard.", "AutoGate", "مشروع تخرجي من جامعة الملك سعود: بوابة مواقف تقرأ لوحات السيارات لحظياً بالرؤية الحاسوبية، وتسجل الدخول في MySQL مع لوحة تحكم PHP."],
   ["Kaggle", "Competed in the Olo Academy Arabic calligraphy classification challenge: 12 script classes, scored by Macro-F1.", "Kaggle", "شاركت في تحدي أكاديمية علو لتصنيف الخطوط العربية على Kaggle: ‏12 نوعاً من الخطوط، والتقييم بمقياس Macro-F1."],
@@ -780,22 +760,22 @@ let LANG = "en";
 const UI = {
   en: { empty: "No fact matches those words. Try one of the example questions.", copied: "Copied: ", blocked: "Copy is blocked here. Select the address: ", pause: "Pause", play: "Play", toggle: "العربية", title: "Nasser Al-Haqshah", bm25: "BM25 score",
         q0: "How do you stop an AI from making things up?",
-        ex: ["How do you stop an AI from making things up?", "Computer vision experience", "Arabic NLP", "Search and retrieval results", "Project management", "Data and dashboards", "When can you start?"] },
+        ex: ["How do you stop an AI from making things up?", "Computer vision experience", "Arabic NLP", "Retrieval and RAG", "Project management", "Data and dashboards", "When can you start?"] },
   ar: { empty: "لا توجد حقيقة تطابق هذه الكلمات. جرّب أحد الأسئلة المقترحة.", copied: "تم النسخ: ", blocked: "النسخ غير متاح هنا. حدد العنوان: ", pause: "إيقاف", play: "تشغيل", toggle: "English", title: "ناصر آل هقشه", bm25: "درجة BM25",
         q0: "كيف تمنع الذكاء الاصطناعي من اختلاق المعلومات؟",
-        ex: ["كيف تمنع الذكاء الاصطناعي من اختلاق المعلومات؟", "خبرة في الرؤية الحاسوبية", "معالجة اللغة العربية", "نتائج البحث والاسترجاع", "إدارة المشاريع", "تحليل البيانات ولوحات Power BI", "متى تقدر تبدأ؟"] }
+        ex: ["كيف تمنع الذكاء الاصطناعي من اختلاق المعلومات؟", "خبرة في الرؤية الحاسوبية", "معالجة اللغة العربية", "الاسترجاع وRAG", "إدارة المشاريع", "تحليل البيانات ولوحات Power BI", "متى تقدر تبدأ؟"] }
 };
-const COLS = { en: ["Mirqab", "Deraa", "Semantic search", "Trip agent", "AutoGate", "PMO role", "SAIP internship"],
-               ar: ["مرقاب", "درع", "البحث الدلالي", "وكيل الرحلات", "AutoGate", "دور PMO", "تدريب SAIP"] };
-const COL_LINKS = ["#mirqab", "#deraa", "#search", null, null, "#path", "#path"];
+const COLS = { en: ["Mirqab", "Deraa", "Trip agent", "AutoGate", "PMO role", "SAIP internship"],
+               ar: ["مرقاب", "درع", "وكيل الرحلات", "AutoGate", "دور PMO", "تدريب SAIP"] };
+const COL_LINKS = ["#mirqab", "#deraa", null, null, "#path", "#path"];
 const SKILLS = [
-  [["Computer vision", "الرؤية الحاسوبية"], [1, 0, 0, 0, 1, 0, 0]],
-  [["Retrieval and RAG", "الاسترجاع وRAG"], [1, 1, 1, 0, 0, 0, 0]],
-  [["LLMs and agents", "النماذج اللغوية والوكلاء"], [1, 1, 0, 1, 0, 0, 0]],
-  [["Arabic NLP", "معالجة اللغة العربية"], [0, 1, 0, 0, 0, 0, 0]],
-  [["Evaluation against baselines", "التقييم مقابل نقاط المقارنة"], [1, 1, 1, 0, 0, 0, 0]],
-  [["Dashboards and web apps", "لوحات المعلومات وتطبيقات الويب"], [1, 0, 0, 0, 1, 0, 1]],
-  [["Reporting and delivery", "التقارير والتسليم"], [0, 0, 0, 0, 0, 1, 1]]
+  [["Computer vision", "الرؤية الحاسوبية"], [1, 0, 0, 1, 0, 0]],
+  [["Retrieval and RAG", "الاسترجاع وRAG"], [1, 1, 0, 0, 0, 0]],
+  [["LLMs and agents", "النماذج اللغوية والوكلاء"], [1, 1, 1, 0, 0, 0]],
+  [["Arabic NLP", "معالجة اللغة العربية"], [0, 1, 0, 0, 0, 0]],
+  [["Evaluation against baselines", "التقييم مقابل نقاط المقارنة"], [1, 1, 0, 0, 0, 0]],
+  [["Dashboards and web apps", "لوحات المعلومات وتطبيقات الويب"], [1, 0, 0, 1, 0, 1]],
+  [["Reporting and delivery", "التقارير والتسليم"], [0, 0, 0, 0, 1, 1]]
 ];
 
 const resultsEl = document.getElementById("results");
